@@ -1,0 +1,25 @@
+en:
+  WelcomeMessage: "Welcome to Calculator."
+  InvalidNumber: "Number is invalid. Enter a valid number."
+  InvalidOperator: "Enter a valid response: 1, 2, 3, or 4"
+  OperatorPrompt: |
+    Enter an operator:
+         1) Addition
+         2) Subtraction
+         3) Multiplication
+         4) Division
+  OperatorToMsg:
+    Add: 'Adding'
+    Sub: 'Subtracting'
+    Mul: 'Multiplying'
+    Div: 'Dividing'
+  PromptFirstNumber:
+    "Enter the first number: "
+  PromptSecondNumber:
+    "Enter the second number: "
+  Calculating:
+    "the two numbers..."
+  Result:
+    "The result is"
+  Repeat?:
+    "Perform another calculation? (Y or not y)"
