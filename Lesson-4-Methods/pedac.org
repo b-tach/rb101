@@ -1,0 +1,45 @@
+#+TITLE: PEDAC
+
+* PEDAC
++ (Understand the) *Problem*
++ *Examples* and test cases
++ *Data* structures
++ *Algorithms*
++ *Code*
+
+** Exercise 1
+Try to work through the "understand the problem" part of this problem on your own, and write the input, output, and rules for it.
+#+begin_example
+# PROBLEM:
+
+# Given a string, write a method `palindrome_substrings` which returns
+# all the substrings from a given string which are palindromes. Consider
+# palindrome words case sensitive.
+
+# Test cases:
+
+# palindrome_substrings("supercalifragilisticexpialidocious") == ["ili"]
+# palindrome_substrings("abcddcbA") == ["bcddcb", "cddc", "dd"]
+# palindrome_substrings("palindrome") == []
+# palindrome_substrings("") == []
+#+end_example
+*** Answer 1:
++ Input: String
++ Output: Array of substrings (Strings)
+**** Rules:
+***** Explicit Requirements:
++ An array of all substrings of the input that are palindromes
++ Palindromes are case-sensitive
+***** Implicit Requirements:
++ The set of palindromes contained in a palindrome are to be included
++ Empty strings return an empty array
++ Two identical characters are a valid palindrome
+**** Questions:
++ Are numbers valid input?
++ Are inputs only strings?
++ If the whole input is a palindrome, will the whole input be part of the output? i.e.,
+  ~palindrome_substrings("aba") == ["aba"]~
++ Is the integer ~121~ a palindrome?
++ What about the float ~123.321~?
+
+** Exercise 2

@@ -1,0 +1,36 @@
+* Tic Tac Toe
+
+** Problem Description
+A 2-player board game utilizing a 3x3 grid in which players take turns marking an empty square with their respective symbol. One player has an 'X' and the other has an 'O'. The winning condition is to have a player's symbol marking 3 squares in a row, to include diagonals. A player will commonly place their piece to block the other from winning.
+
+For this implementation in Ruby for Launch School RB101 Lesson 6, it will be a human player against a computer AI. The player will be designated 'X' and the computer 'O'. The human player will go first. After each move, the game will check for 2 terminal conditions:
+1. Somebody won
+2. The board is full (tie)
+
+** Main sequence
+1. Display the empty 3x3 grid
+2. Ask the user to mark a square
+3. Update the board and check terminal conditions (go to 7 if terminal)
+4. The computer marks a square
+5. Update the board and check terminal conditions (go to 7 if terminal)
+6. Go to 2
+7. If somebody won, display the winner
+8. If the board is full, indicate a tie condition
+9. Ask if the player wants to play again
+10. If playing again, go to 1. Otherwise, terminate the program.
+
+** Data Structures
+The main data structure to decide upon is the state of the board. It is a 3x3 grid, so it has only 9 squares total. There are a few possibilities on how to represent it. One can represent the board as an array of its rows or an array of its columns (a 2-dimensional array with 3 primary elements, each representing an array of 3 elements). Another way is to represent each square on its own, given that their total number is immutable and managably low. This is the option selected in the demonstration videos. This is also what will be selected here.
+
+** Algorithms
+Besides the main sequence for the program, there are some lower level algorithms to figure out:
++ Determining if there is a winner (and who)
++ Detecting a tie
++ Deciding where the computer will place its mark on the board
+
+*** Determining a winner
+At a high level, we will check for a winner by determining if any row, any column, or any diagonal is filled with the same character. If any of them are, we know there is a winner. We find out who the winner is depending on which player's mark is in the spaces. The easiest way to implement this algorithm at the moment is by brute force. I.e., check if boxes 1, 2, and 3 are homogenous, then check if 4, 5, 6, then 7, 8, 9, then 1, 4, 7, then 2, 5, 8, then 3, 6, 9, then 1, 5, 9, and finally 3, 5, 7. There may exist an elegant way to do this that is also easy to read, but if it exists it will wait for another time.
+*** Detecting a tie
+Simply check if there exists a winner, then if there is no winner then check if the board is full.
+*** Computer Player Placement
+For this implementation of Tic Tac Toe, the computer placement will be completely random. Obtain a list of all empty squares and pick one at random.

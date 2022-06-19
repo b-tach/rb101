@@ -1,0 +1,248 @@
+#+title: Lesson 4: Practice Problems: Methods
+#+property: header-args:ruby :session ruby :results output pp :wrap example :exports both
+#+options: num:nil toc:nil
+#+setupfile: http://10.1.1.1:3000/grumpybear/org-themes/raw/branch/master/src/solarized_dark/solarized_dark.theme
+
+* Practice Problem 1
+** Question
+What is the return value of the ~select~ method below? Why?
+#+begin_src ruby :results value
+[1, 2, 3].select do |num|
+  num > 5
+  'hi'
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[1, 2, 3]
+#+end_example
+
+** Answer
+The return value of the indicated ~select~ method will be the same array that we started out with, ~[1, 2, 3]~. The reason for this is ~Array#select~ or ~Enumerable#select~ takes a block as an argument and returns all the values in a collection for which the block returns a truthy value. Without the second expression ~hi~, none of the elements in the array would evaluate to ~true~ because none of them are greater than ~5~. However, the expression ~'hi'~ is neither ~false~ nor ~nil~, so it in of itself is truthy. It is truthy regardless of the value of any of ~num~. Therefore the return value will be the array ~[1, 2, 3]~.
+
+* Practice Problem 2
+** Question
+How does ~count~ treat the block's return value? How can we find out?
+#+begin_src ruby :results value
+['ant', 'bat', 'caterpillar'].count do |str|
+  str.length < 4
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+2
+#+end_example
+
+** Answer
+~Array#count~ in this case treats the block's return value as truthy or falsey. It will return a count of all elements for which the block returns a truthy value. We can find out for sure by running the code and inspecting its output.
+
+* Practice Problem 3
+** Question
+What is the return value of ~reject~ in the following code? Why?
+#+begin_src ruby :results value
+[1, 2, 3].reject do |num|
+  puts num
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[1, 2, 3]
+#+end_example
+
+** Answer
+The return value of ~reject~ here will be the original array, ~[1, 2, 3]~. The reason for this is that ~Array#reject~ will return a new array that excludes any element for which the code block returns a truthy value. The expression ~puts num~ evaluates to ~nil~ regardless of the value of the block variable ~num~. All 3 elements therefore have ~nil~ returned, so none get "rejected".
+
+* Practice Problem 4
+** Question
+What is the return value of ~each_with_object~ in the following code? Why?
+#+begin_src ruby :results value
+['ant', 'bear', 'cat'].each_with_object({}) do |value, hash|
+  hash[value[0]] = value
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"a"=>"ant", "b"=>"bear", "c"=>"cat"}
+#+end_example
+
+** Answer
+~{"a" => "ant", "b" => "bear", "c" => "cat"}~. What is happening is that the method ~Enumerable#each_with_object~ takes both an argument in parenthesis and a code block. The argument is an object that the code block builds/modifies with each iteration through the collection. The code block takes 2 variables: the first is the value of the current element in the collection and the second is the variable pointing to the object specified as an argument in the parenthesis. This object will also be the return value.
+Now for each element, we must understand what ~value~ refers to in order to understand what ~value[0]~ is. ~value~ points to each string in the array. ~value[0]~ is the first letter in that string. ~hash~ is the return object passed into ~each_with_object~ as an empty hash. So for each element in the original array, ~hash~ will have a key of the first letter in each string whose value is the whole string it originated from.
+
+* Practice Problem 5
+** Question
+What does shift do in the following code? How can we find out?
+#+begin_src ruby :results value
+hash = { a: 'ant', b: 'bear' }
+hash.shift
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[:a, "ant"]
+#+end_example
+
+** Answer
+~Hash#shift~ will mutate the object that calls it by removing the first key-value pair and returning them as a 2-element array. So in this case ~hash.shift~ will return the object ~[:a, "ant"]~ and ~hash~ will have the value ~{ b: 'bear' }~. We can find out 2 ways: running the code to see what happens, or consult the documentation.
+#+begin_src ruby
+puts hash
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{:b=>"bear"}
+#+end_example
+
+* Practice Problem 6
+** Question
+What is the return value of the following statement? Why?
+#+begin_src ruby :results value
+['ant', 'bear', 'caterpillar'].pop.size
+#+end_src
+
+#+RESULTS:
+#+begin_example
+11
+#+end_example
+
+** Answer
+~11~
+While ~Array#pop~ does remove the last element, keep in mind that its return value is that element. So when the ~.size~ method is called, it is calling ~String#size~ on ~'caterpillar'~ , not ~Array#size~ on ~['ant', 'bear']~.
+
+* Practice Problem 7
+** Question
+What is the *block*'s return value in the following code? How is it determined? Also, what is the return value of ~any?~ in this code and what does it output?
+#+begin_src ruby :results value
+[1, 2, 3].any? do |num|
+  puts num
+  num.odd?
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+true
+#+end_example
+
+** Answer
+The block's return value will be ~true~ for elements ~1~ and ~3~, and ~false~ for element ~2~. The return value of ~any?~ here will be ~true~. This is because ~Enumerable#any?~ will take a code block and evaluate its elements in that code block. If the code block returns a truthy value for at least one element, the return value of the method will be ~true~. When the expression ~num.odd?~ is called for elements ~1~ and ~3~, it will result in the value ~true~ due to being the last expression in the block.
+As far as output, the documentation does not specify if ~Enumerable#any?~ or ~Array#any?~ will evaluate every single element even if it already came across an element for which its block results in ~true~. Running the short code snippet in the REPL will give the answer.
+
+#+begin_src ruby
+[1, 3, 5, 7].any? do |num|
+  puts num
+  num.odd?
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+1
+#+end_example
+
+It appears that the iteration loop breaks once one of the elements causes the block to return ~true~. The method passes ~1~ to the block, prints it to the console, and evaluates ~1.odd?~ to be ~true~. There is no value of any following element that will cause ~any?~ to return ~false~ at this point since it found a truthy value. It breaks execution of the loop and ~1~ is the only value that is printed to the screen.
+
+* Practice Problem 8
+** Question:
+How does ~take~ work? Is it destructive? How can we find out?
+#+begin_src ruby :results value
+arr = [1, 2, 3, 4, 5]
+arr.take(2)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[1, 2]
+#+end_example
+
+** Answer:
+~Array#take~ (or, broadly, ~Enumerable#take~) /takes/ the first /n/ elements in a collection (where /n/ is the numerical argument passed to the method) and returns them. It is non-destructive. Like before, we can find out by reading the documentation and by running the code.
+#+begin_src ruby
+p arr
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[1, 2, 3, 4, 5]
+#+end_example
+
+* Practice Problem 9
+** Question:
+What is the return value of ~map~ in the following code? Why?
+#+begin_src ruby :results value :hlines no
+{ a: 'ant', b: 'bear' }.map do |key, value|
+  if value.size > 3
+    value
+  end
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[nil, "bear"]
+#+end_example
+
+** Answer:
+I expect that the return value will be a hash with two elements, ~{ a: nil, b: 'bear' }~. This is because the string ~'ant'~ has a size of 3 but the conditional evaluates to ~true~ only if the size is greather than 3. There are no further tests to result in a return value for the ~if~ expression. The return value of ~if~ is the last expression evaluated, excluding the test expression. If no expression is evaluated, then the return value will be ~nil~. This is demonstrated in the following code snippets:
+#+begin_src ruby :results value
+if true
+  # no expression
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+nil
+#+end_example
+
+#+begin_src ruby :results value
+if true
+  false
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+false
+#+end_example
+
+#+begin_src ruby :results value
+if false
+  true
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+nil
+#+end_example
+
+The actual results are not what I expected! Ruby's documentation does not list ~Hash#map~, but /does/ list ~Enumerable#map~. I expected a 2-element hash but got a 2-element array instead composing an array of the keyed values from the has mapped to the code block. Not expected but good to know.
+
+* Practice Problem 10
+** Question:
+What is the return value of the following code? Why?
+#+begin_src ruby :results value
+[1, 2, 3].map do |num|
+  if num > 1
+    puts num
+  else
+    num
+  end
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[1, nil, nil]
+#+end_example
+
+** Answer:
+#+begin_src ruby
+[1, nil, nil]
+#+end_src
+~2~ and ~3~ are both greater than ~1~, but ~1~ is not greater than ~1~. The return value of ~puts~ is ~nil~. Therefore, the array ~[1, 2, 3]~ will be mapped to ~[1, nil, nil]~.

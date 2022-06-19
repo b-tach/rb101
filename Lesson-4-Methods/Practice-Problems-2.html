@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-21 Fri 18:32 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson 4 Additional Practice Problems</title>
+<meta name="author" content="Brady Stanton" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<style type="text/css">
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap;word-wrap:break-word}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}html{font-family:'PT Sans',sans-serif}pre,code{font-family:'Inconsolata',sans-serif}h1,h2,h3,h4,h5,h6{font-family:'PT Sans Narrow',sans-serif;font-weight:700}html{background-color:#073642;color:#839496;margin:1em}body{background-color:#002b36;margin:0 auto;max-width:23cm;border:1pt solid #586e75;padding:1em}code{background-color:#073642;padding:2px}a{color:#b58900}a:visited{color:#cb4b16}a:hover{color:#cb4b16}h1{color:#d33682}h2,h3,h4,h5,h6{color:#859900}pre{background-color:#002b36;color:#839496;border:1pt solid #586e75;padding:1em;box-shadow:5pt 5pt 8pt #073642}pre code{background-color:#002b36}h1{font-size:2.8em}h2{font-size:2.4em}h3{font-size:1.8em}h4{font-size:1.4em}h5{font-size:1.3em}h6{font-size:1.15em}.tag{background-color:#073642;color:#d33682;padding:0 .2em}.todo,.next,.done{color:#002b36;background-color:#dc322f;padding:0 .2em}.tag{-webkit-border-radius:.35em;-moz-border-radius:.35em;border-radius:.35em}.TODO{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#2aa198}.NEXT{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.ACTIVE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.DONE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}.WAITING{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#cb4b16}.HOLD{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.NOTE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.CANCELLED{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Lesson 4 Additional Practice Problems</h1>
+
+
+<div id="outline-container-org09fe893" class="outline-2">
+<h2 id="org09fe893">Practice Problem 1</h2>
+<div class="outline-text-2" id="text-org09fe893">
+</div>
+<div id="outline-container-orgc48ed38" class="outline-3">
+<h3 id="orgc48ed38">Question:</h3>
+<div class="outline-text-3" id="text-orgc48ed38">
+<p>
+Given the array below
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">flintstones = [<span style="color: #2aa198;">"Fred"</span>, <span style="color: #2aa198;">"Barney"</span>, <span style="color: #2aa198;">"Wilma"</span>, <span style="color: #2aa198;">"Betty"</span>, <span style="color: #2aa198;">"Pebbles"</span>, <span style="color: #2aa198;">"BamBam"</span>]
+</pre>
+</div>
+
+<p>
+Turn this array into a hash where the names are the keys and the values are the positions in the array.
+</p>
+</div>
+</div>
+<div id="outline-container-org266ebd7" class="outline-3">
+<h3 id="org266ebd7">Answer:</h3>
+<div class="outline-text-3" id="text-org266ebd7">
+<p>
+We have a few options. We need a way to keep track of both the array value and its position in the array, obviously. We can use <code>Array#each_with_index</code> instead of using an integer counter to loop through each index of the array. If we want to make this a one-liner, we can compose multiple functions. Iterate over all the indices of <code>flintstones</code> with <code>Array#each_with_object</code> and output a hash.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby">(<span style="color: #d33682; font-weight: bold;">0</span>..flintstones.count-<span style="color: #d33682; font-weight: bold;">1</span>).each_with_object({}) { |index, out| out[flintstones[index]] = index }
+</pre>
+</div>
+
+<pre class="example" id="org46f4c95">
+{"Fred"=&gt;0, "Barney"=&gt;1, "Wilma"=&gt;2, "Betty"=&gt;3, "Pebbles"=&gt;4, "BamBam"=&gt;5}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgba0a0e1" class="outline-2">
+<h2 id="orgba0a0e1">Practice Problem 2</h2>
+<div class="outline-text-2" id="text-orgba0a0e1">
+</div>
+<div id="outline-container-orgcb70b54" class="outline-3">
+<h3 id="orgcb70b54">Question:</h3>
+<div class="outline-text-3" id="text-orgcb70b54">
+<p>
+Add up all of the ages from the Munster family hash:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">ages = { <span style="color: #2aa198;">"Herman"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"Lily"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"Grandpa"</span> =&gt; <span style="color: #d33682; font-weight: bold;">5843</span>, <span style="color: #2aa198;">"Eddie"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span>, <span style="color: #2aa198;">"Marilyn"</span> =&gt; <span style="color: #d33682; font-weight: bold;">22</span>, <span style="color: #2aa198;">"Spot"</span> =&gt; <span style="color: #d33682; font-weight: bold;">237</span> }
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf8b81b4" class="outline-3">
+<h3 id="orgf8b81b4">Answer:</h3>
+<div class="outline-text-3" id="text-orgf8b81b4">
+<div class="org-src-container">
+<pre class="src src-ruby">ages.values.sum
+</pre>
+</div>
+
+<pre class="example" id="org3ebf97e">
+6174
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org2fb0b87" class="outline-2">
+<h2 id="org2fb0b87">Practice Problem 3</h2>
+<div class="outline-text-2" id="text-org2fb0b87">
+</div>
+<div id="outline-container-org342d64c" class="outline-3">
+<h3 id="org342d64c">Question:</h3>
+<div class="outline-text-3" id="text-org342d64c">
+<p>
+In the age hash:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">ages = { <span style="color: #2aa198;">"Herman"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"Lily"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"Grandpa"</span> =&gt; <span style="color: #d33682; font-weight: bold;">402</span>, <span style="color: #2aa198;">"Eddie"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span> }
+</pre>
+</div>
+<p>
+remove people with age 100 and greater.
+</p>
+</div>
+</div>
+<div id="outline-container-org0339512" class="outline-3">
+<h3 id="org0339512">Answer:</h3>
+<div class="outline-text-3" id="text-org0339512">
+<div class="org-src-container">
+<pre class="src src-ruby">ages.select { |k, v| v &lt; <span style="color: #d33682; font-weight: bold;">100</span> }
+</pre>
+</div>
+
+<pre class="example" id="org4da2be5">
+{"Herman"=&gt;32, "Lily"=&gt;30, "Eddie"=&gt;10}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org306fe4e" class="outline-2">
+<h2 id="org306fe4e">Practice Problem 4</h2>
+<div class="outline-text-2" id="text-org306fe4e">
+</div>
+<div id="outline-container-orgd815cca" class="outline-3">
+<h3 id="orgd815cca">Question:</h3>
+<div class="outline-text-3" id="text-orgd815cca">
+<p>
+Pick out the minimum age from our current Munster family hash:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">ages = { <span style="color: #2aa198;">"Herman"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"Lily"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"Grandpa"</span> =&gt; <span style="color: #d33682; font-weight: bold;">5843</span>, <span style="color: #2aa198;">"Eddie"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span>, <span style="color: #2aa198;">"Marilyn"</span> =&gt; <span style="color: #d33682; font-weight: bold;">22</span>, <span style="color: #2aa198;">"Spot"</span> =&gt; <span style="color: #d33682; font-weight: bold;">237</span> }
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org3ebf2c8" class="outline-3">
+<h3 id="org3ebf2c8">Answer:</h3>
+<div class="outline-text-3" id="text-org3ebf2c8">
+<p>
+Simply, though maybe not most efficiently, we can obtain an array of all values of <code>ages</code> and sort it with <code>Array#sort</code>. By default it sorts from lowest to highest. Naturally the minimum age present will be at index 0.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">ages.values.sort.first
+</pre>
+</div>
+
+<pre class="example" id="orgd38469f">
+10
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgfd572ed" class="outline-2">
+<h2 id="orgfd572ed">Practice Problem 5</h2>
+<div class="outline-text-2" id="text-orgfd572ed">
+</div>
+<div id="outline-container-org5dfbe5f" class="outline-3">
+<h3 id="org5dfbe5f">Question:</h3>
+<div class="outline-text-3" id="text-org5dfbe5f">
+<p>
+In the array:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">flintstones = <span style="color: #2aa198;">%w(Fred Barney Wilma Betty BamBam Pebbles)</span>
+</pre>
+</div>
+<p>
+Find the index of the first name that starts with &ldquo;Be&rdquo;
+</p>
+</div>
+</div>
+<div id="outline-container-org9bd258c" class="outline-3">
+<h3 id="org9bd258c">Answer:</h3>
+<div class="outline-text-3" id="text-org9bd258c">
+<div class="org-src-container">
+<pre class="src src-ruby">flintstones.index { |name| name[<span style="color: #d33682; font-weight: bold;">0</span>..<span style="color: #d33682; font-weight: bold;">1</span>] == <span style="color: #2aa198;">"Be"</span> }
+</pre>
+</div>
+
+<pre class="example" id="orga966489">
+3
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org9f78948" class="outline-2">
+<h2 id="org9f78948">Practice Problem 6</h2>
+<div class="outline-text-2" id="text-org9f78948">
+</div>
+<div id="outline-container-org6140515" class="outline-3">
+<h3 id="org6140515">Question:</h3>
+<div class="outline-text-3" id="text-org6140515">
+<p>
+Amend this array so that the names are all shortened to just the first three characters:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">flintstones = <span style="color: #2aa198;">%w(Fred Barney Wilma Betty BamBam Pebbles)</span>
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-org71532e6" class="outline-3">
+<h3 id="org71532e6">Answer:</h3>
+<div class="outline-text-3" id="text-org71532e6">
+<div class="org-src-container">
+<pre class="src src-ruby">flintstones.map { |name| name[<span style="color: #d33682; font-weight: bold;">0</span>, <span style="color: #d33682; font-weight: bold;">3</span>] }
+</pre>
+</div>
+
+<pre class="example" id="orgb142be0">
+["Fre", "Bar", "Wil", "Bet", "Bam", "Peb"]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0261ed1" class="outline-2">
+<h2 id="org0261ed1">Practice Problem 7</h2>
+<div class="outline-text-2" id="text-org0261ed1">
+</div>
+<div id="outline-container-org17d3bf8" class="outline-3">
+<h3 id="org17d3bf8">Question:</h3>
+<div class="outline-text-3" id="text-org17d3bf8">
+<p>
+Create a hash that expresses the frequency with which each letter occurs in this string:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">statement = <span style="color: #2aa198;">"The Flintstones Rock"</span>
+</pre>
+</div>
+<p>
+ex:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">{ <span style="color: #2aa198;">"F"</span>=&gt;<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #2aa198;">"R"</span>=&gt;<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #2aa198;">"T"</span>=&gt;<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #2aa198;">"c"</span>=&gt;<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #2aa198;">"e"</span>=&gt;<span style="color: #d33682; font-weight: bold;">2</span>, ... }
+</pre>
+</div>
+</div>
+</div>
+<div id="outline-container-orgdbb587a" class="outline-3">
+<h3 id="orgdbb587a">Answer:</h3>
+<div class="outline-text-3" id="text-orgdbb587a">
+<div class="org-src-container">
+<pre class="src src-ruby">statement.chars.each_with_object({}) {|char, out| out[char] = (out[char] == <span style="color: #d33682; font-weight: bold;">nil</span> ? <span style="color: #d33682; font-weight: bold;">1</span> : out[char] + <span style="color: #d33682; font-weight: bold;">1</span>)}
+</pre>
+</div>
+
+<pre class="example" id="orgb8385fc">
+{"T"=&gt;1, "h"=&gt;1, "e"=&gt;2, " "=&gt;2, "F"=&gt;1, "l"=&gt;1, "i"=&gt;1, "n"=&gt;2, "t"=&gt;2, "s"=&gt;2, "o"=&gt;2, "R"=&gt;1, "c"=&gt;1, "k"=&gt;1}
+</pre>
+
+<p>
+More readable:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">statement.chars.each_with_object({}) <span style="color: #859900; font-weight: bold;">do</span> |char, out|
+  <span style="color: #859900; font-weight: bold;">if</span> out[char] == <span style="color: #d33682; font-weight: bold;">nil</span>
+    out[char] = <span style="color: #d33682; font-weight: bold;">1</span>
+  <span style="color: #859900; font-weight: bold;">else</span>
+    out[char] += <span style="color: #d33682; font-weight: bold;">1</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org0422bfa">
+{"T"=&gt;1, "h"=&gt;1, "e"=&gt;2, " "=&gt;2, "F"=&gt;1, "l"=&gt;1, "i"=&gt;1, "n"=&gt;2, "t"=&gt;2, "s"=&gt;2, "o"=&gt;2, "R"=&gt;1, "c"=&gt;1, "k"=&gt;1}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4495315" class="outline-2">
+<h2 id="org4495315">Practice Problem 8</h2>
+<div class="outline-text-2" id="text-org4495315">
+</div>
+<div id="outline-container-orge51d7a0" class="outline-3">
+<h3 id="orge51d7a0">Question:</h3>
+<div class="outline-text-3" id="text-orge51d7a0">
+<p>
+What happens when we modify an array while we are iterating over it? What would be output by this code?
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">numbers = [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">3</span>, <span style="color: #d33682; font-weight: bold;">4</span>]
+numbers.each <span style="color: #859900; font-weight: bold;">do</span> |number|
+  <span style="color: #268bd2;">p</span> number
+  numbers.shift(<span style="color: #d33682; font-weight: bold;">1</span>)
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org522b981">
+[3, 4]
+</pre>
+
+<p>
+What would be output by this code?
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">numbers = [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">3</span>, <span style="color: #d33682; font-weight: bold;">4</span>]
+numbers.each <span style="color: #859900; font-weight: bold;">do</span> |number|
+  <span style="color: #268bd2;">p</span> number
+  numbers.pop(<span style="color: #d33682; font-weight: bold;">1</span>)
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org435922e">
+[1, 2]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2ccb1d0" class="outline-3">
+<h3 id="org2ccb1d0">Answer:</h3>
+<div class="outline-text-3" id="text-org2ccb1d0">
+<p>
+For the first code snippet, I think the most likely flow will be:
+</p>
+<ol class="org-ol">
+<li><code>number</code> is assigned to <code>numbers[0]</code>, which is the value <code>1</code></li>
+<li><code>1</code> is printed</li>
+<li><code>numbers</code> calls <code>Array#shift</code>, causing <code>numbers</code> to be mutated</li>
+<li><code>number</code> is assigned to <code>numbers[1]</code>, which no longer points to <code>2</code>, but now to <code>3</code> since they shifted by one</li>
+<li><code>3</code> is printed</li>
+<li><code>Array#shift</code> again</li>
+<li>Either <code>numbers[2]</code> returns a value of <code>nil</code>, or it returns an error.</li>
+<li>If no error is raised, then returns the last 2 values, or <code>[3, 4]</code>.</li>
+</ol>
+
+<p>
+For the second code snippet, this is what I think will happen:
+</p>
+<ol class="org-ol">
+<li><code>number</code> is assigned to index <code>0</code>, which is value <code>1</code></li>
+<li><code>1</code> is printed</li>
+<li><code>numbers[3]</code> is eradicated via <code>Array#pop</code>, so <code>4</code> goes bye bye</li>
+<li><code>number</code> is assigned to index <code>1</code>, which is value 2</li>
+<li><code>2</code> is printed</li>
+<li><code>numbers[2]</code> is eradicated same as above, so long number <code>3</code></li>
+<li><code>number</code> is assigned to <code>numbers[2]</code>, which returns <code>nil</code></li>
+<li><code>numbers</code> is returned, which by now is the value <code>[1, 2]</code></li>
+</ol>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org194227d" class="outline-2">
+<h2 id="org194227d">Practice Problem 9</h2>
+<div class="outline-text-2" id="text-org194227d">
+</div>
+<div id="outline-container-org7b39f15" class="outline-3">
+<h3 id="org7b39f15">Question:</h3>
+<div class="outline-text-3" id="text-org7b39f15">
+<p>
+As we have seen previously we can use some built-in string methods to change the case of a string. A notably missing method is something provided in Rails, but not in Ruby itself&#x2026;titleize. This method in Ruby on Rails creates a string that has each word capitalized as it would be in a title. For example, the string:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">words = <span style="color: #2aa198;">"the flintstones rock"</span>
+</pre>
+</div>
+<p>
+would be
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">words = <span style="color: #2aa198;">"The Flintstones Rock"</span>
+</pre>
+</div>
+<p>
+Write your own version of the rails <code>titleize</code> implementation.
+</p>
+</div>
+</div>
+<div id="outline-container-org3cacd48" class="outline-3">
+<h3 id="org3cacd48">Answer</h3>
+<div class="outline-text-3" id="text-org3cacd48">
+<div class="org-src-container">
+<pre class="src src-ruby">words.split.map {|w| w[<span style="color: #d33682; font-weight: bold;">0</span>].upcase + w[<span style="color: #d33682; font-weight: bold;">1</span>..]}.join(<span style="color: #2aa198;">' '</span>)
+</pre>
+</div>
+
+<pre class="example" id="org819eae6">
+"The Flintstones Rock"
+</pre>
+
+<p>
+An easier way from the official solution:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">words.split.map { |w| w.capitalize }.join(<span style="color: #2aa198;">' '</span>)
+</pre>
+</div>
+
+<pre class="example" id="orgd91583d">
+"The Flintstones Rock"
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org82e64ca" class="outline-2">
+<h2 id="org82e64ca">Practice Problem 10</h2>
+<div class="outline-text-2" id="text-org82e64ca">
+</div>
+<div id="outline-container-org59ac097" class="outline-3">
+<h3 id="org59ac097">Question:</h3>
+<div class="outline-text-3" id="text-org59ac097">
+<p>
+Given the munsters hash below
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">munsters = {
+  <span style="color: #2aa198;">"Herman"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Lily"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span> },
+  <span style="color: #2aa198;">"Grandpa"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">402</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Eddie"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Marilyn"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">23</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span>}
+}
+</pre>
+</div>
+<p>
+Modify the hash such that each member of the Munster family has an additional &ldquo;age<sub>group</sub>&rdquo; key that has one of three values describing the age group the family member is in (kid, adult, or senior). Your solution should produce the hash below
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">{ <span style="color: #2aa198;">"Herman"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span>, <span style="color: #2aa198;">"age_group"</span> =&gt; <span style="color: #2aa198;">"adult"</span> },
+  <span style="color: #2aa198;">"Lily"</span> =&gt; {<span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span>, <span style="color: #2aa198;">"age_group"</span> =&gt; <span style="color: #2aa198;">"adult"</span> },
+  <span style="color: #2aa198;">"Grandpa"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">402</span>, <span style="color: #2aa198;">"g ender"</span> =&gt; <span style="color: #2aa198;">"male"</span>, <span style="color: #2aa198;">"age_group"</span> =&gt; <span style="color: #2aa198;">"senior"</span> },
+  <span style="color: #2aa198;">"Eddie"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span>, <span style="color: #2aa198;">"age_group"</span> =&gt; <span style="color: #2aa198;">"kid"</span> },
+  <span style="color: #2aa198;">"Marilyn"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">23</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span>, <span style="color: #2aa198;">"age_group"</span> =&gt; <span style="color: #2aa198;">"adult"</span> } }
+</pre>
+</div>
+<p>
+Note: a kid is in the age range 0 - 17, an adult is in the range 18 - 64 and a senior is aged 65+.
+</p>
+</div>
+</div>
+<div id="outline-container-org2f1eec1" class="outline-3">
+<h3 id="org2f1eec1">Answer:</h3>
+<div class="outline-text-3" id="text-org2f1eec1">
+<div class="org-src-container">
+<pre class="src src-ruby">munsters.each_value <span style="color: #859900; font-weight: bold;">do</span> |name|
+  <span style="color: #859900; font-weight: bold;">if</span> name[<span style="color: #2aa198;">"age"</span>] &lt; <span style="color: #d33682; font-weight: bold;">18</span>
+    name[<span style="color: #2aa198;">"age_group"</span>] = <span style="color: #2aa198;">"kid"</span>
+  <span style="color: #859900; font-weight: bold;">elsif</span> name[<span style="color: #2aa198;">"age"</span>] &lt; <span style="color: #d33682; font-weight: bold;">65</span>
+    name[<span style="color: #2aa198;">"age_group"</span>] = <span style="color: #2aa198;">"adult"</span>
+  <span style="color: #859900; font-weight: bold;">else</span>
+    name[<span style="color: #2aa198;">"age_group"</span>] = <span style="color: #2aa198;">"senior"</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org6163ea9">
+{"Herman"=&gt;{"age"=&gt;32, "gender"=&gt;"male", "age_group"=&gt;"adult"},
+ "Lily"=&gt;{"age"=&gt;30, "gender"=&gt;"female", "age_group"=&gt;"adult"},
+ "Grandpa"=&gt;{"age"=&gt;402, "gender"=&gt;"male", "age_group"=&gt;"senior"},
+ "Eddie"=&gt;{"age"=&gt;10, "gender"=&gt;"male", "age_group"=&gt;"kid"},
+ "Marilyn"=&gt;{"age"=&gt;23, "gender"=&gt;"female", "age_group"=&gt;"adult"}}
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-ruby">munsters.each_value <span style="color: #859900; font-weight: bold;">do</span> |name|
+  <span style="color: #859900; font-weight: bold;">case</span> name[<span style="color: #2aa198;">"age"</span>]
+    <span style="color: #859900; font-weight: bold;">when</span> <span style="color: #d33682; font-weight: bold;">0</span>..<span style="color: #d33682; font-weight: bold;">17</span>
+      name[<span style="color: #2aa198;">"age_group"</span>] = <span style="color: #2aa198;">"kid"</span>
+    <span style="color: #859900; font-weight: bold;">when</span> <span style="color: #d33682; font-weight: bold;">18</span>..<span style="color: #d33682; font-weight: bold;">64</span>
+      name[<span style="color: #2aa198;">"age_group"</span>] = <span style="color: #2aa198;">"adult"</span>
+    <span style="color: #859900; font-weight: bold;">else</span> <span style="color: #405A61;"># </span><span style="color: #405A61;">or when 65..-1</span>
+      name[<span style="color: #2aa198;">"age_group"</span>] = <span style="color: #2aa198;">"senior"</span>
+    <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org3cd9ace">
+{"Herman"=&gt;{"age"=&gt;32, "gender"=&gt;"male", "age_group"=&gt;"adult"},
+ "Lily"=&gt;{"age"=&gt;30, "gender"=&gt;"female", "age_group"=&gt;"adult"},
+ "Grandpa"=&gt;{"age"=&gt;402, "gender"=&gt;"male", "age_group"=&gt;"senior"},
+ "Eddie"=&gt;{"age"=&gt;10, "gender"=&gt;"male", "age_group"=&gt;"kid"},
+ "Marilyn"=&gt;{"age"=&gt;23, "gender"=&gt;"female", "age_group"=&gt;"adult"}}
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Brady Stanton</p>
+<p class="date">Created: 2022-01-21 Fri 18:32</p>
+</div>
+</body>
+</html>

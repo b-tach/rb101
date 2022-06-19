@@ -1,0 +1,219 @@
+* Practice Problems - Medium 1
+
+** Question 1:
+Let's do some "ASCII Art" (a stone-age form of nerd artwork from back in the days before computers had video screens). For this practice problem, write a one-line program that creates the following output 10 times, with the subsequent line indented 1 space to the right:
+#+begin_src ruby
+The Flintstones Rock!
+ The Flintstones Rock!
+  The Flintstones Rock!
+#+end_src
+*** Answer 1:
+#+begin_src ruby
+(0..10).each {|i| puts(' ' * i + "The Flintstones Rock!")}
+#+end_src
+The official solution is a little simpler:
+#+begin_src ruby
+10.times {|n| puts (' ' * n) + "The Flintstones Rock!"}
+#+end_src
+Pretty close, but the official solution excels in readability.
+
+
+** Question 2:
+The result of the following statement will be an error:
+#+begin_src ruby
+puts "the value of 40 + 2 is " + (40 + 2)
+#+end_src
+Why is this and what are two possible ways to fix this?
+*** Answer 2:
+By reading alone, I see the error will be that ~puts~ cannot print uncasted numbers, they must be first converted to a ~String~. Here are two possible ways to fix this:
+#+begin_src ruby
+puts "the value of 40 + 2 is #{40 + 2}"
+puts "the value of 40 + 2 is " + (40 + 2).to_s
+#+end_src
+The first will implicitly convert the number to a printable ~String~. The second converts the number to a ~String~ because of the method called, ~Number#to_s~.
+
+
+** Question 3:
+Alan wrote the following method, which was intended to show all of the factors of the input number:
+#+begin_src ruby
+def factors(number)
+  divisor = number
+  factors = []
+  begin
+    factors << number / divisor if number % divisor == 0
+    divisor -= 1
+  end until divisor == 0
+  factors
+end
+#+end_src
+Alyssa noticed that this will fail if the input is ~0~, or a negative number, and asked Alan to change the loop. How can you make this work without using ~begin~ / ~end~ / ~until~? Note that we're not looking to find the factors for 0 or negative numbers, but we just want to handle it gracefully instead of raising an exception or going into an infinite loop.
+*** Answer 3:
+One way to handle this problem is to give a specific return value in case of an error. This could be a ~String~ with a specific error message, a specific number (such as 0 or -1), or even ~nil~.
+#+begin_src ruby
+def factors(number)
+  return nil if number <= 0
+  ...
+  while divisor > 0
+    ...
+    divisor -= 1
+  end
+#+end_src
+Another way
+#+begin_src ruby
+def factors(number)
+  return nil if number <= 0
+  number.downto(1).each do |divisor|
+    factors << number / divisor if number % div == 0
+  end
+  factors
+#+end_src
+**** Bonus 1: What is the purpose of the ~number % divisor == 0~?
+If ~divisor~ is a multiple of ~number~, then the remainder of ~number / divisor~ will be 0. The result of this division is a factor of ~number~.
+**** Bonus 2: What is the purpose of the second-to-last line (line 8) in the method (the ~factors~ before the method's ~end~)?
+~factors~ is written there as a final expression to make the method's return value ~factors~.
+
+
+** Question 4:
+Alyssa was asked to write an implementation of a rolling buffer. Elements are added to the rolling buffer and if the buffer becomes full, then new elements that are added will displace the oldest elements in the buffer.
+She wrote two implementations saying, "Take your pick. Do you like ~<<~ or ~+~ for modifying the buffer?". Is there a difference between the two, other than what operator she chose to use to add an element to the buffer?
+
+#+begin_src ruby
+def rolling_buffer1(buffer, max_buffer_size, new_element)
+  buffer << new_element
+  buffer.shift if buffer.size > max_buffer_size
+  buffer
+end
+
+def rolling_buffer2(input_array, max_buffer_size, new_element)
+  buffer = input_array + [new_element]
+  buffer.shift if buffer.size > max_buffer_size
+  buffer
+end
+#+end_src
+
+*** Answer 4:
+There is a /huge/ difference between the two. The first will take an existing buffer as its first argument and mutate it, as the ~<<~ operator mutates its caller. If the new size is above the second argument, ~max_buffer_size~, then it calls ~Array#shift~, which left-shifts the array, removing the first element and returning the element it removed. It also mutates its caller. It then returns the mutated ~buffer~. This is not a recommended design, as the ~rolling_buffer1~ method both has a meaningful return value /and/ mutates one of its arguments.
+
+The second implementation does things a little different. It takes an existing array (as a buffer), adds the ~new_element~, and removes the first element if its new size is larger than ~max_buffer_size~. The new buffer is then returned. No mutation occurs. Of the two implementations, this is a better design due to its nature being more straightforward -- it doesn't both mutate a local variable /and/ returns data, it chooses one and sticks with it. One thing that may be a downside is that if an element is removed from the buffer, it does not return that element but that element is gone.
+
+
+** Question 5:
+Alyssa asked Ben to write up a basic implementation of a Fibonacci calculator. A user passes in two numbers, and the calculator will keep computing the sequence until some limit is reached.
+Ben coded up this implementation but complained that as soon as he ran it, he got an error. Something about the limit variable. What's wrong with the code?
+#+begin_src ruby
+limit = 15
+
+def fib(first_num, second_num)
+  while first_num + second_num < limit
+    sum = first_num + second_num
+    first_num = second_num
+    second_num = sum
+  end
+  sum
+end
+
+result = fib(0, 1)
+puts "result is #{result}"
+#+end_src
+How would you fix this so that it works?
+
+*** Answer 5:
+~limit~ is a local variable outside the scope of ~fib~. Because ~limit~ is a hard-coded number, it really should be defined as a constant. The effect in doing so will cause ~fib~ to be able to reference it in its scope.
+#+begin_src ruby
+LIMIT = 15
+def fib(first_num, second_num)
+  while first_num + second_num < LIMIT
+    ...
+  end
+  sum
+end
+#+end_src
+Another solution would be to make ~limit~ into another argument for the method ~fib~ so it would be in scope. This would be a better design than changing ~limit~ into a constant due to the latter's self-contained logic.
+
+
+** Question 6:
+What is the output of the following code?
+#+begin_src ruby
+answer = 42
+
+def mess_with_it(some_number)
+  some_number += 8
+end
+
+new_answer = mess_with_it(answer)
+
+p answer - 8
+#+end_src
+
+*** Answer 6:
+The output should be ~34~, as the ~+=~ operator is an assignment operator; therefore it does not mutate its caller. Integers are non-mutible anyway.
+
+
+** Question 7:
+One day Spot was playing with the Munster family's home computer and he wrote a small program to mess with their demographic data:
+#+begin_src ruby
+munsters = {
+  "Herman" => { "age" => 32, "gender" => "male" },
+  "Lily" => { "age" => 30, "gender" => "female" },
+  "Grandpa" => { "age" => 402, "gender" => "male" },
+  "Eddie" => { "age" => 10, "gender" => "male" },
+  "Marilyn" => { "age" => 23, "gender" => "female"}
+}
+
+def mess_with_demographics(demo_hash)
+  demo_hash.values.each do |family_member|
+    family_member["age"] += 42
+    family_member["gender"] = "other"
+  end
+end
+#+end_src
+After writing this method, he typed the following...and before Grandpa could stop him, he hit the Enter key with his tail:
+#+begin_src ruby
+mess_with_demographics(munsters)
+#+end_src
+Did the family's data get ransacked? Why or why not?
+
+*** Answer 7:
+Yes. ~munster~'s object ID, or memory location, was passed into ~mess_with_demographics~. Remember that ~demo_hash~ did not undergo a reassignment, but instead was iterated through and each element modified. Also remember that ~Hash#[]=~ operator mutates the hash that calls it.
+
+
+** Question 8:
+Method calls can take expressions as arguments. Suppose we define a method called rps as follows, which follows the classic rules of rock-paper-scissors game, but with a slight twist that it declares whatever hand was used in the tie as the result of that tie.
+#+begin_src ruby
+def rps(fist1, fist2)
+  if fist1 == "rock"
+    (fist2 == "paper") ? "paper" : "rock"
+  elsif fist1 == "paper"
+    (fist2 == "scissors") ? "scissors" : "paper"
+  else
+    (fist2 == "rock") ? "rock" : "scissors"
+  end
+end
+#+end_src
+What is the result of the following call?
+#+begin_src ruby
+puts rps(rps(rps("rock", "paper"), rps("rock", "scissors")), "rock")
+#+end_src
+
+*** Answer 8:
+The method is very wordy and can take a few minutes to follow. Basically it returns the winner/tie between the two. The base ~rps~ of the nested ~rps~'s should return ~"paper"~.
+
+
+** Question 9:
+Consider these two simple methods:
+#+begin_src ruby
+def foo(param = "no")
+  "yes"
+end
+
+def bar(param = "no")
+  param == "no" ? "yes" : "no"
+end
+#+end_src
+What would be the return value of the following method invocation?
+#+begin_src ruby
+bar(foo)
+#+end_src
+
+*** Answer 9:
+~foo~ only returns ~"yes"~. ~bar~ returns ~"no"~ if passed ~"yes"~, and ~"yes"~ if passed ~"no"~. So ~bar(foo)~ evaluates to ~bar("yes")~, which evalutes to ~"no"~.

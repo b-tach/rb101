@@ -1,0 +1,292 @@
+#+title: Lesson 4 Additional Practice Problems
+#+property: header-args:ruby :session ruby :results output pp :wrap example :exports both
+#+options: num:nil toc:nil
+#+setupfile: http://10.1.1.1:3000/grumpybear/org-themes/raw/branch/master/src/solarized_dark/solarized_dark.theme
+
+
+* Practice Problem 1
+** Question:
+Given the array below
+#+begin_src ruby :results none
+flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "BamBam"]
+#+end_src
+
+Turn this array into a hash where the names are the keys and the values are the positions in the array.
+** Answer:
+We have a few options. We need a way to keep track of both the array value and its position in the array, obviously. We can use ~Array#each_with_index~ instead of using an integer counter to loop through each index of the array. If we want to make this a one-liner, we can compose multiple functions. Iterate over all the indices of ~flintstones~ with ~Array#each_with_object~ and output a hash.
+
+#+begin_src ruby :results value
+(0..flintstones.count-1).each_with_object({}) { |index, out| out[flintstones[index]] = index }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"Fred"=>0, "Barney"=>1, "Wilma"=>2, "Betty"=>3, "Pebbles"=>4, "BamBam"=>5}
+#+end_example
+
+* Practice Problem 2
+** Question:
+Add up all of the ages from the Munster family hash:
+#+begin_src ruby :results none
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10, "Marilyn" => 22, "Spot" => 237 }
+#+end_src
+
+** Answer:
+#+begin_src ruby :results value
+ages.values.sum
+#+end_src
+
+#+RESULTS:
+#+begin_example
+6174
+#+end_example
+
+* Practice Problem 3
+** Question:
+In the age hash:
+#+begin_src ruby :results none
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 402, "Eddie" => 10 }
+#+end_src
+remove people with age 100 and greater.
+** Answer:
+#+begin_src ruby :results value
+ages.select { |k, v| v < 100 }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"Herman"=>32, "Lily"=>30, "Eddie"=>10}
+#+end_example
+
+* Practice Problem 4
+** Question:
+Pick out the minimum age from our current Munster family hash:
+#+begin_src ruby :results none
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10, "Marilyn" => 22, "Spot" => 237 }
+#+end_src
+** Answer:
+Simply, though maybe not most efficiently, we can obtain an array of all values of ~ages~ and sort it with ~Array#sort~. By default it sorts from lowest to highest. Naturally the minimum age present will be at index 0.
+#+begin_src ruby :results value
+ages.values.sort.first
+#+end_src
+
+#+RESULTS:
+#+begin_example
+10
+#+end_example
+
+* Practice Problem 5
+** Question:
+In the array:
+#+begin_src ruby :results none
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+#+end_src
+Find the index of the first name that starts with "Be"
+** Answer:
+#+begin_src ruby :results value
+flintstones.index { |name| name[0..1] == "Be" }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+3
+#+end_example
+
+* Practice Problem 6
+** Question:
+Amend this array so that the names are all shortened to just the first three characters:
+#+begin_src ruby :results none
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+#+end_src
+** Answer:
+#+begin_src ruby :results value
+flintstones.map { |name| name[0, 3] }
+#+end_src
+
+#+RESULTS:
+#+begin_example
+["Fre", "Bar", "Wil", "Bet", "Bam", "Peb"]
+#+end_example
+
+* Practice Problem 7
+** Question:
+Create a hash that expresses the frequency with which each letter occurs in this string:
+#+begin_src ruby :results none
+statement = "The Flintstones Rock"
+#+end_src
+ex:
+#+begin_src ruby :results none
+{ "F"=>1, "R"=>1, "T"=>1, "c"=>1, "e"=>2, ... }
+#+end_src
+** Answer:
+#+begin_src ruby :results value
+statement.chars.each_with_object({}) {|char, out| out[char] = (out[char] == nil ? 1 : out[char] + 1)}
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"T"=>1, "h"=>1, "e"=>2, " "=>2, "F"=>1, "l"=>1, "i"=>1, "n"=>2, "t"=>2, "s"=>2, "o"=>2, "R"=>1, "c"=>1, "k"=>1}
+#+end_example
+
+More readable:
+#+begin_src ruby :results value
+statement.chars.each_with_object({}) do |char, out|
+  if out[char] == nil
+    out[char] = 1
+  else
+    out[char] += 1
+  end
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"T"=>1, "h"=>1, "e"=>2, " "=>2, "F"=>1, "l"=>1, "i"=>1, "n"=>2, "t"=>2, "s"=>2, "o"=>2, "R"=>1, "c"=>1, "k"=>1}
+#+end_example
+
+* Practice Problem 8
+** Question:
+What happens when we modify an array while we are iterating over it? What would be output by this code?
+#+begin_src ruby :results value
+numbers = [1, 2, 3, 4]
+numbers.each do |number|
+  p number
+  numbers.shift(1)
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[3, 4]
+#+end_example
+
+What would be output by this code?
+#+begin_src ruby :results value
+numbers = [1, 2, 3, 4]
+numbers.each do |number|
+  p number
+  numbers.pop(1)
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+[1, 2]
+#+end_example
+
+** Answer:
+For the first code snippet, I think the most likely flow will be:
+1. ~number~ is assigned to ~numbers[0]~, which is the value ~1~
+2. ~1~ is printed
+3. ~numbers~ calls ~Array#shift~, causing ~numbers~ to be mutated
+4. ~number~ is assigned to ~numbers[1]~, which no longer points to ~2~, but now to ~3~ since they shifted by one
+5. ~3~ is printed
+6. ~Array#shift~ again
+7. Either ~numbers[2]~ returns a value of ~nil~, or it returns an error.
+8. If no error is raised, then returns the last 2 values, or ~[3, 4]~.
+
+For the second code snippet, this is what I think will happen:
+1. ~number~ is assigned to index ~0~, which is value ~1~
+2. ~1~ is printed
+3. ~numbers[3]~ is eradicated via ~Array#pop~, so ~4~ goes bye bye
+4. ~number~ is assigned to index ~1~, which is value 2
+5. ~2~ is printed
+6. ~numbers[2]~ is eradicated same as above, so long number ~3~
+7. ~number~ is assigned to ~numbers[2]~, which returns ~nil~
+8. ~numbers~ is returned, which by now is the value ~[1, 2]~
+
+* Practice Problem 9
+** Question:
+As we have seen previously we can use some built-in string methods to change the case of a string. A notably missing method is something provided in Rails, but not in Ruby itself...titleize. This method in Ruby on Rails creates a string that has each word capitalized as it would be in a title. For example, the string:
+#+begin_src ruby :results none
+words = "the flintstones rock"
+#+end_src
+would be
+#+begin_src ruby :results none
+words = "The Flintstones Rock"
+#+end_src
+Write your own version of the rails ~titleize~ implementation.
+** Answer
+#+begin_src ruby :results value
+words.split.map {|w| w[0].upcase + w[1..]}.join(' ')
+#+end_src
+
+#+RESULTS:
+#+begin_example
+"The Flintstones Rock"
+#+end_example
+
+An easier way from the official solution:
+#+begin_src ruby :results value
+words.split.map { |w| w.capitalize }.join(' ')
+#+end_src
+
+#+RESULTS:
+#+begin_example
+"The Flintstones Rock"
+#+end_example
+
+* Practice Problem 10
+** Question:
+Given the munsters hash below
+#+begin_src ruby :results none
+munsters = {
+  "Herman" => { "age" => 32, "gender" => "male" },
+  "Lily" => { "age" => 30, "gender" => "female" },
+  "Grandpa" => { "age" => 402, "gender" => "male" },
+  "Eddie" => { "age" => 10, "gender" => "male" },
+  "Marilyn" => { "age" => 23, "gender" => "female"}
+}
+#+end_src
+Modify the hash such that each member of the Munster family has an additional "age_group" key that has one of three values describing the age group the family member is in (kid, adult, or senior). Your solution should produce the hash below
+#+begin_src ruby :results none
+{ "Herman" => { "age" => 32, "gender" => "male", "age_group" => "adult" },
+  "Lily" => {"age" => 30, "gender" => "female", "age_group" => "adult" },
+  "Grandpa" => { "age" => 402, "g ender" => "male", "age_group" => "senior" },
+  "Eddie" => { "age" => 10, "gender" => "male", "age_group" => "kid" },
+  "Marilyn" => { "age" => 23, "gender" => "female", "age_group" => "adult" } }
+#+end_src
+Note: a kid is in the age range 0 - 17, an adult is in the range 18 - 64 and a senior is aged 65+.
+** Answer:
+#+begin_src ruby :results value
+munsters.each_value do |name|
+  if name["age"] < 18
+    name["age_group"] = "kid"
+  elsif name["age"] < 65
+    name["age_group"] = "adult"
+  else
+    name["age_group"] = "senior"
+  end
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"Herman"=>{"age"=>32, "gender"=>"male", "age_group"=>"adult"},
+ "Lily"=>{"age"=>30, "gender"=>"female", "age_group"=>"adult"},
+ "Grandpa"=>{"age"=>402, "gender"=>"male", "age_group"=>"senior"},
+ "Eddie"=>{"age"=>10, "gender"=>"male", "age_group"=>"kid"},
+ "Marilyn"=>{"age"=>23, "gender"=>"female", "age_group"=>"adult"}}
+#+end_example
+
+#+begin_src ruby :results value :hlines yes
+munsters.each_value do |name|
+  case name["age"]
+    when 0..17
+      name["age_group"] = "kid"
+    when 18..64
+      name["age_group"] = "adult"
+    else # or when 65..-1
+      name["age_group"] = "senior"
+    end
+end
+#+end_src
+
+#+RESULTS:
+#+begin_example
+{"Herman"=>{"age"=>32, "gender"=>"male", "age_group"=>"adult"},
+ "Lily"=>{"age"=>30, "gender"=>"female", "age_group"=>"adult"},
+ "Grandpa"=>{"age"=>402, "gender"=>"male", "age_group"=>"senior"},
+ "Eddie"=>{"age"=>10, "gender"=>"male", "age_group"=>"kid"},
+ "Marilyn"=>{"age"=>23, "gender"=>"female", "age_group"=>"adult"}}
+#+end_example

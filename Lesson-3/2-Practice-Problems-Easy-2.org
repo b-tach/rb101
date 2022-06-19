@@ -1,0 +1,142 @@
+* Practice Problems - Easy 2
+
+** Q1: In this hash of people and their age, see if "Spot" is present.
+#+begin_src ruby
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 402, "Eddie" => 10 }
+#+end_src
+*Bonus*: What are two other hash methods that would work just as well for this solution?
+
+*** A1:
+#+begin_src ruby
+ages.fetch('Spot', 'Spot is not here.')
+'Spot is here' if ages.has_key?('Spot')
+'Spot is here' if ages.include?('Spot')
+'Spot is here' if ages.key?('Spot')
+'Spot is here' if ages.member?('Spot')
+#+end_src
+
+** Q2: Starting with this string:
+#+begin_src ruby
+munsters_description = "The Munsters are creepy in a good way."
+#+end_src
+Convert the string in the following ways (code will be executed on original ~munsters_description~ above):
+#+begin_src ruby
+"tHE mUNSTERS ARE CREEPY IN A GOOD WAY."
+"The munsters are creepy in a good way."
+"the munsters are creepy in a good way."
+"THE MUNSTERS ARE CREEPY IN A GOOD WAY."
+#+end_src
+*** A2:
+#+begin_src ruby
+munsters_description.upcase!.sub!('T', 't').sub!('M', 'm')
+# munsters_description.swapcase! # does the same thing
+munsters_description.capitalize!
+munsters_description.downcase!
+munsters_description.upcase! # or .swapcase!
+#+end_src
+
+** Q3: We have most of the Munster family in our age hash:
+#+begin_src ruby
+ages = { "Herman" => 32, "Lily" => 30, "Grandpa" => 5843, "Eddie" => 10 }
+#+end_src
+Add ages for Marilyn and Spot to the existing hash:
+#+begin_src ruby
+additional_ages = { "Marilyn" => 22, "Spot" => 237 }
+#+end_src
+*** A3:
+#+begin_src ruby
+ages.merge!(additional_ages)
+#+end_src
+
+** Q4: See if the name "Dino" appears in the string below:
+#+begin_src ruby
+advice = "Few things in life are as important as house training your pet dinosaur."
+#+end_src
+*** A4:
+#+begin_src ruby
+puts "Dino found!" if advice.include?('Dino')
+puts "Dino found!" if advice.split().include?('Dino')
+puts "Dino found!" if advice.match?("Dino")
+#+end_src
+
+** Q5: Show an easier way to write this array:
+#+begin_src ruby
+flintstones = ["Fred", "Barney", "Wilma", "Betty", "BamBam", "Pebbles"]
+#+end_src
+*** A5:
+#+begin_src ruby
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+#+end_src
+
+** Q6: How can we add the family pet "Dino" to our usual array:
+#+begin_src ruby
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+#+end_src
+*** A6:
+#+begin_src ruby
+flintstones << "Dino"
+#+end_src
+
+** Q7: In the previous practice problem we added Dino to our array like this:
+#+begin_src ruby
+flintstones = %w(Fred Barney Wilma Betty BamBam Pebbles)
+flintstones << "Dino"
+#+end_src
+
+We could have used either Array#concat or Array#push to add Dino to the family.
+How can we add multiple items to our array? (Dino and Hoppy)
+*** A7:
+#+begin_src ruby
+(flintstones << %w(Dino Hoppy)).flatten!
+# or
+%w(Dino Hoppy).each {|w| flintstones.push(w)}
+# or
+flintstones.push('Dino').push('Hoppy')
+# or
+flintstones.concat(%w(Dino Hoppy))
+#+end_src
+
+** Q8: Shorten the following sentence:
+#+begin_src ruby
+advice = "Few things in life are as important as house training your pet dinosaur."
+#+end_src
+Review the String#slice! documentation, and use that method to make the return value ~"Few things in life are as important as ".~ But leave the ~advice~ variable as ~"house training your pet dinosaur."~.
+*** A8:
+#+begin_src ruby
+advice.slice!(0, 39)
+# or
+advice.slice!(0, advice.index('house'))
+#+end_src
+Bonus: If we use the ~String#slice~ method instead, we will return the same thing (~"Few things in life are as important as "~), but ~advice~ will remain unchanged.
+
+** Q9: Write a one-liner to count the number of lower-case 't' characters in the following string:
+#+begin_src ruby
+statement = "The Flintstones Rock!"
+#+end_src
+*** A9:
+#+begin_src ruby
+statement.count('t')
+#+end_src
+** Q10: Back in the stone age (before CSS) we used spaces to align things on the screen. If we had a table of Flintstone family members that was forty characters in width, how could we easily center that title above the table with spaces?
+#+begin_src ruby
+title = "Flintstone Family Members"
+#+end_src
+*** A10:
+#+begin_src ruby
+title = "Flintstone Family Members"
+table_size = 40
+padding = table_size - title.size()
+# if padding is an odd number, put the odd space on the right side.
+left_padding = padding / 2
+if padding % 2 != 0
+  right_padding = (padding / 2) + 1
+else
+  right_padding = padding / 2
+end
+#+end_src
+
+After looking at the solution, there /is/ an easier way:
+#+begin_src ruby
+title.center(40)
+#+end_src
+Go figure.

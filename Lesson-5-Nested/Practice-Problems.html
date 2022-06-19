@@ -1,0 +1,903 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2022-01-21 Fri 18:31 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Lesson 5 Practice Problems</title>
+<meta name="author" content="Brady Stanton" />
+<meta name="generator" content="Org Mode" />
+<style>
+  #content { max-width: 60em; margin: auto; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #e6e6e6;
+    border-radius: 3px;
+    background-color: #f2f2f2;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: auto;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    padding: 3px;
+    color: #555;
+    background-color: #f2f2f299;
+  }
+  pre.src:hover:before { display: inline; margin-top: 14px;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-authinfo::before { content: 'Authinfo'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .equation-container {
+    display: table;
+    text-align: center;
+    width: 100%;
+  }
+  .equation {
+    vertical-align: middle;
+  }
+  .equation-label {
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+  }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+</style>
+<style type="text/css">
+article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary{display:block}audio,canvas,video{display:inline-block}audio:not([controls]){display:none;height:0}[hidden]{display:none}html{font-family:sans-serif;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%}body{margin:0}a:focus{outline:thin dotted}a:active,a:hover{outline:0}h1{font-size:2em}abbr[title]{border-bottom:1px dotted}b,strong{font-weight:bold}dfn{font-style:italic}mark{background:#ff0;color:#000}code,kbd,pre,samp{font-family:monospace,serif;font-size:1em}pre{white-space:pre-wrap;word-wrap:break-word}q{quotes:"\201C" "\201D" "\2018" "\2019"}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sup{top:-0.5em}sub{bottom:-0.25em}img{border:0}svg:not(:root){overflow:hidden}figure{margin:0}fieldset{border:1px solid #c0c0c0;margin:0 2px;padding:.35em .625em .75em}legend{border:0;padding:0}button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}button,input{line-height:normal}button,html input[type="button"],input[type="reset"],input[type="submit"]{-webkit-appearance:button;cursor:pointer}button[disabled],input[disabled]{cursor:default}input[type="checkbox"],input[type="radio"]{box-sizing:border-box;padding:0}input[type="search"]{-webkit-appearance:textfield;-moz-box-sizing:content-box;-webkit-box-sizing:content-box;box-sizing:content-box}input[type="search"]::-webkit-search-cancel-button,input[type="search"]::-webkit-search-decoration{-webkit-appearance:none}button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}textarea{overflow:auto;vertical-align:top}table{border-collapse:collapse;border-spacing:0}html{font-family:'PT Sans',sans-serif}pre,code{font-family:'Inconsolata',sans-serif}h1,h2,h3,h4,h5,h6{font-family:'PT Sans Narrow',sans-serif;font-weight:700}html{background-color:#073642;color:#839496;margin:1em}body{background-color:#002b36;margin:0 auto;max-width:23cm;border:1pt solid #586e75;padding:1em}code{background-color:#073642;padding:2px}a{color:#b58900}a:visited{color:#cb4b16}a:hover{color:#cb4b16}h1{color:#d33682}h2,h3,h4,h5,h6{color:#859900}pre{background-color:#002b36;color:#839496;border:1pt solid #586e75;padding:1em;box-shadow:5pt 5pt 8pt #073642}pre code{background-color:#002b36}h1{font-size:2.8em}h2{font-size:2.4em}h3{font-size:1.8em}h4{font-size:1.4em}h5{font-size:1.3em}h6{font-size:1.15em}.tag{background-color:#073642;color:#d33682;padding:0 .2em}.todo,.next,.done{color:#002b36;background-color:#dc322f;padding:0 .2em}.tag{-webkit-border-radius:.35em;-moz-border-radius:.35em;border-radius:.35em}.TODO{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#2aa198}.NEXT{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.ACTIVE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#268bd2}.DONE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}.WAITING{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#cb4b16}.HOLD{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.NOTE{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#d33682}.CANCELLED{-webkit-border-radius:.2em;-moz-border-radius:.2em;border-radius:.2em;background-color:#859900}
+</style>
+</head>
+<body>
+<div id="content" class="content">
+<h1 class="title">Lesson 5 Practice Problems</h1>
+
+<div id="outline-container-org1b53bbd" class="outline-2">
+<h2 id="org1b53bbd">Problem 1</h2>
+<div class="outline-text-2" id="text-org1b53bbd">
+<p>
+How would you order this array of number strings by descending numeric value?
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [<span style="color: #2aa198;">'10'</span>, <span style="color: #2aa198;">'11'</span>, <span style="color: #2aa198;">'9'</span>, <span style="color: #2aa198;">'7'</span>, <span style="color: #2aa198;">'8'</span>]
+</pre>
+</div>
+</div>
+<div id="outline-container-org58f5533" class="outline-3">
+<h3 id="org58f5533">Answer:</h3>
+<div class="outline-text-3" id="text-org58f5533">
+<p>
+They can be easily ordered by numerical value by converting the strings to integers.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby"><span style="color: #268bd2;">p</span> arr.sort_by {|n| n.to_i }.reverse
+<span style="color: #268bd2;">p</span> arr.map {|n| n.to_i }.sort.map {|n| n.to_s}.reverse
+</pre>
+</div>
+
+<pre class="example" id="org1240298">
+["11", "10", "9", "8", "7"]
+["11", "10", "9", "8", "7"]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2b97a5b" class="outline-3">
+<h3 id="org2b97a5b">Official answer:</h3>
+<div class="outline-text-3" id="text-org2b97a5b">
+<div class="org-src-container">
+<pre class="src src-ruby">arr.sort { |a, b| b.to_i &lt;=&gt; a.to_i }
+</pre>
+</div>
+
+<pre class="example" id="org420f921">
+["11", "10", "9", "8", "7"]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgad01da8" class="outline-2">
+<h2 id="orgad01da8">Problem 2</h2>
+<div class="outline-text-2" id="text-orgad01da8">
+<p>
+How would you order this array of hashes based on the year of publication of each book, from the earliest to the latest?
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">books = [
+  {<span style="color: #d33682; font-weight: bold;">title:</span> <span style="color: #2aa198;">'One Hundred Years of Solitude'</span>, <span style="color: #d33682; font-weight: bold;">author:</span> <span style="color: #2aa198;">'Gabriel Garcia Marquez'</span>, <span style="color: #d33682; font-weight: bold;">published:</span> <span style="color: #2aa198;">'1967'</span>},
+  {<span style="color: #d33682; font-weight: bold;">title:</span> <span style="color: #2aa198;">'The Great Gatsby'</span>, <span style="color: #d33682; font-weight: bold;">author:</span> <span style="color: #2aa198;">'F. Scott Fitzgerald'</span>, <span style="color: #d33682; font-weight: bold;">published:</span> <span style="color: #2aa198;">'1925'</span>},
+  {<span style="color: #d33682; font-weight: bold;">title:</span> <span style="color: #2aa198;">'War and Peace'</span>, <span style="color: #d33682; font-weight: bold;">author:</span> <span style="color: #2aa198;">'Leo Tolstoy'</span>, <span style="color: #d33682; font-weight: bold;">published:</span> <span style="color: #2aa198;">'1869'</span>},
+  {<span style="color: #d33682; font-weight: bold;">title:</span> <span style="color: #2aa198;">'Ulysses'</span>, <span style="color: #d33682; font-weight: bold;">author:</span> <span style="color: #2aa198;">'James Joyce'</span>, <span style="color: #d33682; font-weight: bold;">published:</span> <span style="color: #2aa198;">'1922'</span>}
+]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org688487d" class="outline-3">
+<h3 id="org688487d">Answer:</h3>
+<div class="outline-text-3" id="text-org688487d">
+<p>
+Convert the year strings to integers. No custom sorting needs to be done since teh default <code>sort</code> goes from least to greatest.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">books.sort_by <span style="color: #859900; font-weight: bold;">do</span> |book|
+  book[<span style="color: #d33682; font-weight: bold;">:published</span>].to_i
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org21d6911">
+[{:title=&gt;"War and Peace", :author=&gt;"Leo Tolstoy", :published=&gt;"1869"},
+ {:title=&gt;"Ulysses", :author=&gt;"James Joyce", :published=&gt;"1922"},
+ {:title=&gt;"The Great Gatsby", :author=&gt;"F. Scott Fitzgerald", :published=&gt;"1925"},
+ {:title=&gt;"One Hundred Years of Solitude", :author=&gt;"Gabriel Garcia Marquez", :published=&gt;"1967"}]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org731820f" class="outline-2">
+<h2 id="org731820f">Problem 3</h2>
+<div class="outline-text-2" id="text-org731820f">
+<p>
+For each of these collection objects demonstrate how you would reference the letter <code>'g'</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr1 = [<span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, [<span style="color: #2aa198;">'c'</span>, [<span style="color: #2aa198;">'d'</span>, <span style="color: #2aa198;">'e'</span>, <span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>]]]
+arr2 = [{<span style="color: #d33682; font-weight: bold;">first:</span> [<span style="color: #2aa198;">'a'</span>, <span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span>], <span style="color: #d33682; font-weight: bold;">second:</span> [<span style="color: #2aa198;">'d'</span>, <span style="color: #2aa198;">'e'</span>, <span style="color: #2aa198;">'f'</span>]}, {<span style="color: #d33682; font-weight: bold;">third:</span> [<span style="color: #2aa198;">'g'</span>, <span style="color: #2aa198;">'h'</span>, <span style="color: #2aa198;">'i'</span>]}]
+arr3 = [[<span style="color: #2aa198;">'abc'</span>], [<span style="color: #2aa198;">'def'</span>], {<span style="color: #d33682; font-weight: bold;">third:</span> [<span style="color: #2aa198;">'ghi'</span>]}]
+hsh1 = {<span style="color: #2aa198;">'a'</span> =&gt; [<span style="color: #2aa198;">'d'</span>, <span style="color: #2aa198;">'e'</span>], <span style="color: #2aa198;">'b'</span> =&gt; [<span style="color: #2aa198;">'f'</span>, <span style="color: #2aa198;">'g'</span>], <span style="color: #2aa198;">'c'</span> =&gt; [<span style="color: #2aa198;">'h'</span>, <span style="color: #2aa198;">'i'</span>]}
+hsh2 = {<span style="color: #d33682; font-weight: bold;">first:</span> {<span style="color: #2aa198;">'d'</span> =&gt; <span style="color: #d33682; font-weight: bold;">3</span>}, <span style="color: #d33682; font-weight: bold;">second:</span> {<span style="color: #2aa198;">'e'</span> =&gt; <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #2aa198;">'f'</span> =&gt; <span style="color: #d33682; font-weight: bold;">1</span>}, <span style="color: #d33682; font-weight: bold;">third:</span> {<span style="color: #2aa198;">'g'</span> =&gt; <span style="color: #d33682; font-weight: bold;">0</span>}}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfeaa7dd" class="outline-3">
+<h3 id="orgfeaa7dd">Answer</h3>
+<div class="outline-text-3" id="text-orgfeaa7dd">
+<div class="org-src-container">
+<pre class="src src-ruby"><span style="color: #268bd2;">p</span> arr1[<span style="color: #d33682; font-weight: bold;">2</span>][<span style="color: #d33682; font-weight: bold;">1</span>][<span style="color: #d33682; font-weight: bold;">3</span>]
+<span style="color: #268bd2;">p</span> arr2[<span style="color: #d33682; font-weight: bold;">1</span>][<span style="color: #d33682; font-weight: bold;">:third</span>][<span style="color: #d33682; font-weight: bold;">0</span>]
+<span style="color: #268bd2;">p</span> arr3[<span style="color: #d33682; font-weight: bold;">2</span>][<span style="color: #d33682; font-weight: bold;">:third</span>][<span style="color: #d33682; font-weight: bold;">0</span>][<span style="color: #d33682; font-weight: bold;">0</span>]
+<span style="color: #268bd2;">p</span> hsh1[<span style="color: #2aa198;">'b'</span>][<span style="color: #d33682; font-weight: bold;">1</span>]
+<span style="color: #268bd2;">p</span> hsh2[<span style="color: #d33682; font-weight: bold;">:third</span>].key(<span style="color: #d33682; font-weight: bold;">0</span>)
+</pre>
+</div>
+
+<pre class="example" id="org16b237b">
+"g"
+"g"
+"g"
+"g"
+"g"
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgdb0a742" class="outline-2">
+<h2 id="orgdb0a742">Problem 4</h2>
+<div class="outline-text-2" id="text-orgdb0a742">
+<p>
+For each of these collection objects where the value <code>3</code> occurs, demonstrate how you would change this to <code>4</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr1 = [<span style="color: #d33682; font-weight: bold;">1</span>, [<span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">3</span>], <span style="color: #d33682; font-weight: bold;">4</span>]
+arr2 = [{<span style="color: #d33682; font-weight: bold;">a:</span> <span style="color: #d33682; font-weight: bold;">1</span>}, {<span style="color: #d33682; font-weight: bold;">b:</span> <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">c:</span> [<span style="color: #d33682; font-weight: bold;">7</span>, <span style="color: #d33682; font-weight: bold;">6</span>, <span style="color: #d33682; font-weight: bold;">5</span>], <span style="color: #d33682; font-weight: bold;">d:</span> <span style="color: #d33682; font-weight: bold;">4</span>}, <span style="color: #d33682; font-weight: bold;">3</span>]
+hsh1 = {<span style="color: #d33682; font-weight: bold;">first:</span> [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">2</span>, [<span style="color: #d33682; font-weight: bold;">3</span>]]}
+hsh2 = {[<span style="color: #2aa198;">'a'</span>] =&gt; {<span style="color: #d33682; font-weight: bold;">a:</span> [<span style="color: #2aa198;">'1'</span>, <span style="color: #d33682; font-weight: bold;">:two</span>, <span style="color: #d33682; font-weight: bold;">3</span>], <span style="color: #d33682; font-weight: bold;">b:</span> <span style="color: #d33682; font-weight: bold;">4</span>}, <span style="color: #2aa198;">'b'</span> =&gt; <span style="color: #d33682; font-weight: bold;">5</span>}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org7b26ab0" class="outline-3">
+<h3 id="org7b26ab0">Answer</h3>
+<div class="outline-text-3" id="text-org7b26ab0">
+<div class="org-src-container">
+<pre class="src src-ruby">arr1[<span style="color: #d33682; font-weight: bold;">1</span>][<span style="color: #d33682; font-weight: bold;">1</span>] = <span style="color: #d33682; font-weight: bold;">4</span>
+arr2[<span style="color: #d33682; font-weight: bold;">2</span>] = <span style="color: #d33682; font-weight: bold;">4</span>
+hsh1[<span style="color: #d33682; font-weight: bold;">:first</span>][<span style="color: #d33682; font-weight: bold;">2</span>][<span style="color: #d33682; font-weight: bold;">0</span>] = <span style="color: #d33682; font-weight: bold;">4</span>
+hsh2[[<span style="color: #2aa198;">'a'</span>]][<span style="color: #d33682; font-weight: bold;">:a</span>][<span style="color: #d33682; font-weight: bold;">2</span>] = <span style="color: #d33682; font-weight: bold;">4</span>
+
+<span style="color: #268bd2;">p</span> arr1
+<span style="color: #268bd2;">p</span> arr2
+<span style="color: #268bd2;">p</span> hsh1
+<span style="color: #268bd2;">p</span> hsh2
+</pre>
+</div>
+
+<pre class="example" id="org27c2b25">
+[1, [2, 4], 4]
+[{:a=&gt;1}, {:b=&gt;2, :c=&gt;[7, 6, 5], :d=&gt;4}, 4]
+{:first=&gt;[1, 2, [4]]}
+{["a"]=&gt;{:a=&gt;["1", :two, 4], :b=&gt;4}, "b"=&gt;5}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a89222" class="outline-2">
+<h2 id="org3a89222">Problem 5</h2>
+<div class="outline-text-2" id="text-org3a89222">
+<p>
+Given this nested Hash:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">munsters = {
+  <span style="color: #2aa198;">"Herman"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Lily"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span> },
+  <span style="color: #2aa198;">"Grandpa"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">402</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Eddie"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Marilyn"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">23</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span>}
+}
+</pre>
+</div>
+<p>
+figure out the total age of just the male members of the family.
+</p>
+</div>
+
+<div id="outline-container-org27dde6d" class="outline-3">
+<h3 id="org27dde6d">Answer</h3>
+<div class="outline-text-3" id="text-org27dde6d">
+<p>
+The slightly verbose but readable way without method-hunting
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">total_age = <span style="color: #d33682; font-weight: bold;">0</span>
+munsters.each <span style="color: #859900; font-weight: bold;">do</span> |name, stats|
+  <span style="color: #859900; font-weight: bold;">if</span> stats[<span style="color: #2aa198;">"gender"</span>] == <span style="color: #2aa198;">"male"</span>
+    total_age += stats[<span style="color: #2aa198;">"age"</span>]
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #268bd2;">p</span> total_age
+</pre>
+</div>
+
+<pre class="example" id="org8caf662">
+444
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org8dbfd45" class="outline-2">
+<h2 id="org8dbfd45">Problem 6</h2>
+<div class="outline-text-2" id="text-org8dbfd45">
+<p>
+One of the most frequently used real-world string properties is that of &ldquo;string substitution&rdquo;, where we take a hard-coded string and modify it with various parameters from our program.
+Given this previously seen family hash, print out the name, age and gender of each family member:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">munsters = {
+  <span style="color: #2aa198;">"Herman"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">32</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Lily"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">30</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span> },
+  <span style="color: #2aa198;">"Grandpa"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">402</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Eddie"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">10</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"male"</span> },
+  <span style="color: #2aa198;">"Marilyn"</span> =&gt; { <span style="color: #2aa198;">"age"</span> =&gt; <span style="color: #d33682; font-weight: bold;">23</span>, <span style="color: #2aa198;">"gender"</span> =&gt; <span style="color: #2aa198;">"female"</span>}
+}
+</pre>
+</div>
+<p>
+&#x2026;like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-text">(Name) is a (age)-year-old (male or female).
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8ea6f2f" class="outline-3">
+<h3 id="org8ea6f2f">Answer</h3>
+<div class="outline-text-3" id="text-org8ea6f2f">
+<div class="org-src-container">
+<pre class="src src-ruby">munsters.each <span style="color: #859900; font-weight: bold;">do</span> |name, stats|
+  <span style="color: #268bd2;">puts</span> <span style="color: #2aa198;">"</span><span style="color: #6c71c4;">#{name}</span><span style="color: #2aa198;"> is a </span><span style="color: #6c71c4;">#{stats["age"]}</span><span style="color: #2aa198;">-year-old </span><span style="color: #6c71c4;">#{stats["gender"]}</span><span style="color: #2aa198;">"</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org349a542">
+Herman is a 32-year-old male
+Lily is a 30-year-old female
+Grandpa is a 402-year-old male
+Eddie is a 10-year-old male
+Marilyn is a 23-year-old female
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orga35678d" class="outline-2">
+<h2 id="orga35678d">Problem 7</h2>
+<div class="outline-text-2" id="text-orga35678d">
+<p>
+Given this code, what would be the final values of <code>a</code> and <code>b</code>? Try to work this out without running the code.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">a = <span style="color: #d33682; font-weight: bold;">2</span>
+b = [<span style="color: #d33682; font-weight: bold;">5</span>, <span style="color: #d33682; font-weight: bold;">8</span>]
+arr = [a, b]
+
+arr[<span style="color: #d33682; font-weight: bold;">0</span>] += <span style="color: #d33682; font-weight: bold;">2</span>
+arr[<span style="color: #d33682; font-weight: bold;">1</span>][<span style="color: #d33682; font-weight: bold;">0</span>] -= a
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org14b49f9" class="outline-3">
+<h3 id="org14b49f9">Answer</h3>
+<div class="outline-text-3" id="text-org14b49f9">
+<p>
+if the operators <code>+=</code> and <code>-=</code> do not mutate their caller (which is what I am assuming), then&#x2026;
+<code>a</code> will be unchanged. When element <code>0</code> of <code>arr</code> is referenced, it is reassigned to the value of <code>a + 2</code>, rather than assigning <code>a</code> to <code>a + 2</code> and assigning itself that resulting value of <code>a</code>. In essence, the pointer at <code>arr[0]</code> is changed.
+However, <code>b</code> will not fare the same. <code>arr[1]</code> directly references the object in its second index, but the object in its second index is an array. So <code>arr[1][0]</code> directly references <code>b[0]</code>, rather than <code>arr[1]</code>. Therefore when it is decremented by the value of a, <code>b</code> is mutated. <code>b</code>&rsquo;s final value will be <code>[3, 8]</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-ruby"><span style="color: #268bd2;">p</span> a
+<span style="color: #268bd2;">p</span> b
+</pre>
+</div>
+
+<pre class="example" id="org1b9f457">
+2
+[3, 8]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgac0fccb" class="outline-2">
+<h2 id="orgac0fccb">Problem 8</h2>
+<div class="outline-text-2" id="text-orgac0fccb">
+<p>
+Using the <code>each</code> method, write some code to output all of the vowels from the strings.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">hsh = {<span style="color: #d33682; font-weight: bold;">first:</span> [<span style="color: #2aa198;">'the'</span>, <span style="color: #2aa198;">'quick'</span>], <span style="color: #d33682; font-weight: bold;">second:</span> [<span style="color: #2aa198;">'brown'</span>, <span style="color: #2aa198;">'fox'</span>], <span style="color: #d33682; font-weight: bold;">third:</span> [<span style="color: #2aa198;">'jumped'</span>], <span style="color: #d33682; font-weight: bold;">fourth:</span> [<span style="color: #2aa198;">'over'</span>, <span style="color: #2aa198;">'the'</span>, <span style="color: #2aa198;">'lazy'</span>, <span style="color: #2aa198;">'dog'</span>]}
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org9eb3f19" class="outline-3">
+<h3 id="org9eb3f19">Answer</h3>
+<div class="outline-text-3" id="text-org9eb3f19">
+<div class="org-src-container">
+<pre class="src src-ruby">vowels = <span style="color: #2aa198;">""</span>
+hsh.each <span style="color: #859900; font-weight: bold;">do</span> |key, word_arr|
+  word_arr.each <span style="color: #859900; font-weight: bold;">do</span> |word|
+    vowels += word.gsub(<span style="color: #2aa198;">/[^aeiouy]/</span>, <span style="color: #2aa198;">''</span>)
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #268bd2;">p</span> vowels
+</pre>
+</div>
+
+<pre class="example" id="org423ec17">
+"euiooueoeeayo"
+</pre>
+</div>
+</div>
+</div>
+
+
+<div id="outline-container-orgb31e5b8" class="outline-2">
+<h2 id="orgb31e5b8">Problem 9</h2>
+<div class="outline-text-2" id="text-orgb31e5b8">
+<p>
+Given this data structure, return a new array of the same structure but with the sub arrays being ordered (alphabetically or numerically as appropriate) in descending order.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [[<span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'c'</span>, <span style="color: #2aa198;">'a'</span>], [<span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">3</span>], [<span style="color: #2aa198;">'blue'</span>, <span style="color: #2aa198;">'black'</span>, <span style="color: #2aa198;">'green'</span>]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org12c78a1" class="outline-3">
+<h3 id="org12c78a1">Answer</h3>
+<div class="outline-text-3" id="text-org12c78a1">
+<p>
+Descending order: <code>z,y,...,a</code>; <code>9,8,...,1</code>
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr.map <span style="color: #859900; font-weight: bold;">do</span> |subarr|
+  subarr.sort {|a, b| b &lt;=&gt; a }
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org2e95b14">
+[["c", "b", "a"], [3, 2, 1], ["green", "blue", "black"]]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf292977" class="outline-2">
+<h2 id="orgf292977">Problem 10</h2>
+<div class="outline-text-2" id="text-orgf292977">
+<p>
+Given the following data structure and without modifying the original array, use the <code>map</code> method to return a new array identical in structure to the original but where the value of each integer is incremented by 1.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">[{<span style="color: #d33682; font-weight: bold;">a:</span> <span style="color: #d33682; font-weight: bold;">1</span>}, {<span style="color: #d33682; font-weight: bold;">b:</span> <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">c:</span> <span style="color: #d33682; font-weight: bold;">3</span>}, {<span style="color: #d33682; font-weight: bold;">d:</span> <span style="color: #d33682; font-weight: bold;">4</span>, <span style="color: #d33682; font-weight: bold;">e:</span> <span style="color: #d33682; font-weight: bold;">5</span>, <span style="color: #d33682; font-weight: bold;">f:</span> <span style="color: #d33682; font-weight: bold;">6</span>}]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org8e90d4d" class="outline-3">
+<h3 id="org8e90d4d">Answer</h3>
+<div class="outline-text-3" id="text-org8e90d4d">
+<p>
+Observation: every integer is the value of a key in a hash. There are no integer keys, only integer key-values.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [{<span style="color: #d33682; font-weight: bold;">a:</span> <span style="color: #d33682; font-weight: bold;">1</span>}, {<span style="color: #d33682; font-weight: bold;">b:</span> <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">c:</span> <span style="color: #d33682; font-weight: bold;">3</span>}, {<span style="color: #d33682; font-weight: bold;">d:</span> <span style="color: #d33682; font-weight: bold;">4</span>, <span style="color: #d33682; font-weight: bold;">e:</span> <span style="color: #d33682; font-weight: bold;">5</span>, <span style="color: #d33682; font-weight: bold;">f:</span> <span style="color: #d33682; font-weight: bold;">6</span>}]
+arr.map <span style="color: #859900; font-weight: bold;">do</span> |el|
+  copy = {}
+  el.each_pair {|k,v| copy[k] = v + <span style="color: #d33682; font-weight: bold;">1</span>}
+  copy
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org88ae674">
+[{:a=&gt;2}, {:b=&gt;3, :c=&gt;4}, {:d=&gt;5, :e=&gt;6, :f=&gt;7}]
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-ruby">arr
+</pre>
+</div>
+
+<pre class="example" id="orgb553875">
+[{:a=&gt;1}, {:b=&gt;2, :c=&gt;3}, {:d=&gt;4, :e=&gt;5, :f=&gt;6}]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org504710a" class="outline-2">
+<h2 id="org504710a">Problem 11</h2>
+<div class="outline-text-2" id="text-org504710a">
+<p>
+Given the following data structure use a combination of methods, including either the <code>select</code> or <code>reject</code> method, to return a new array identical in structure to the original but containing only the integers that are multiples of <code>3</code>.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [[<span style="color: #d33682; font-weight: bold;">2</span>], [<span style="color: #d33682; font-weight: bold;">3</span>, <span style="color: #d33682; font-weight: bold;">5</span>, <span style="color: #d33682; font-weight: bold;">7</span>], [<span style="color: #d33682; font-weight: bold;">9</span>], [<span style="color: #d33682; font-weight: bold;">11</span>, <span style="color: #d33682; font-weight: bold;">13</span>, <span style="color: #d33682; font-weight: bold;">15</span>]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgfb4435a" class="outline-3">
+<h3 id="orgfb4435a">Solution</h3>
+<div class="outline-text-3" id="text-orgfb4435a">
+<div class="org-src-container">
+<pre class="src src-ruby">arr.map <span style="color: #859900; font-weight: bold;">do</span> |subarr|
+  subarr.map <span style="color: #859900; font-weight: bold;">do</span> |el|
+    el <span style="color: #859900; font-weight: bold;">if</span> el % <span style="color: #d33682; font-weight: bold;">3</span> == <span style="color: #d33682; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+  .select {|e| e != <span style="color: #d33682; font-weight: bold;">nil</span> }
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="orge85c4ae">
+[[], [3], [9], [15]]
+</pre>
+
+<p>
+Simpler solution would be
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr.map <span style="color: #859900; font-weight: bold;">do</span> |el|
+  el.select <span style="color: #859900; font-weight: bold;">do</span> |n|
+    n % <span style="color: #d33682; font-weight: bold;">3</span> == <span style="color: #d33682; font-weight: bold;">0</span>
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org9a9f1a1">
+[[], [3], [9], [15]]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgd0eb30d" class="outline-2">
+<h2 id="orgd0eb30d">Problem 12</h2>
+<div class="outline-text-2" id="text-orgd0eb30d">
+<p>
+Given the following data structure, and <i>without</i> using the <code>Array#to_h</code> method, write some code that will return a hash where the key is the first item in each sub array and the value is the second item.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [[<span style="color: #d33682; font-weight: bold;">:a</span>, <span style="color: #d33682; font-weight: bold;">1</span>], [<span style="color: #2aa198;">'b'</span>, <span style="color: #2aa198;">'two'</span>], [<span style="color: #2aa198;">'sea'</span>, {<span style="color: #d33682; font-weight: bold;">c:</span> <span style="color: #d33682; font-weight: bold;">3</span>}], [{<span style="color: #d33682; font-weight: bold;">a:</span> <span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">b:</span> <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">c:</span> <span style="color: #d33682; font-weight: bold;">3</span>, <span style="color: #d33682; font-weight: bold;">d:</span> <span style="color: #d33682; font-weight: bold;">4</span>}, <span style="color: #2aa198;">'D'</span>]]
+<span style="color: #405A61;"># </span><span style="color: #405A61;">expected return value: {:a=&gt;1, "b"=&gt;"two", "sea"=&gt;{:c=&gt;3}, {:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}=&gt;"D"}</span>
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org31067f6" class="outline-3">
+<h3 id="org31067f6">Solution</h3>
+<div class="outline-text-3" id="text-org31067f6">
+<p>
+Observation: <code>arr</code> is an array of arrays. Each subarray in <code>arr</code> is composed of only two members, regardless of member type. We will not worry about any level deeper than this.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">my_array_to_hash</span>(arr)
+  hash = {}
+  arr.each <span style="color: #859900; font-weight: bold;">do</span> |el|
+    hash[el[<span style="color: #d33682; font-weight: bold;">0</span>]] = el[<span style="color: #d33682; font-weight: bold;">1</span>]
+  <span style="color: #859900; font-weight: bold;">end</span>
+  hash
+<span style="color: #859900; font-weight: bold;">end</span>
+my_array_to_hash(arr)
+</pre>
+</div>
+
+<pre class="example" id="orga95ff5e">
+{:a=&gt;1, "b"=&gt;"two", "sea"=&gt;{:c=&gt;3}, {:a=&gt;1, :b=&gt;2, :c=&gt;3, :d=&gt;4}=&gt;"D"}
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org5ebbc57" class="outline-2">
+<h2 id="org5ebbc57">Problem 13</h2>
+<div class="outline-text-2" id="text-org5ebbc57">
+<p>
+Given the following data structure, return a new array containing the same sub-arrays as the original but ordered logically by only taking into consideration the <i>odd</i> numbers they contain.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [[<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">6</span>, <span style="color: #d33682; font-weight: bold;">9</span>], [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">4</span>, <span style="color: #d33682; font-weight: bold;">9</span>], [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">6</span>, <span style="color: #d33682; font-weight: bold;">7</span>], [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">8</span>, <span style="color: #d33682; font-weight: bold;">3</span>]]
+</pre>
+</div>
+<p>
+The sorted array should look like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">[[<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">8</span>, <span style="color: #d33682; font-weight: bold;">3</span>], [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">6</span>, <span style="color: #d33682; font-weight: bold;">7</span>], [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">4</span>, <span style="color: #d33682; font-weight: bold;">9</span>], [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">6</span>, <span style="color: #d33682; font-weight: bold;">9</span>]]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org4904500" class="outline-3">
+<h3 id="org4904500">Solution</h3>
+<div class="outline-text-3" id="text-org4904500">
+<p>
+What happens when two elements have the same odd numbers, but different even numbers? Does the order between the two matter? For example, does it matter if <code>[1, 4, 9]</code> comes before <code>[1, 6, 9]</code> or not?
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr.sort_by <span style="color: #859900; font-weight: bold;">do</span> |el|
+  el.select {|n| n.odd?}
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="orgac11ad7">
+[[1, 8, 3], [1, 6, 7], [1, 6, 9], [1, 4, 9]]
+</pre>
+
+<p>
+It appears that the result I got was the same as the official solution, even though both differ from the &ldquo;should look like this&rdquo; presented in the problem description.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org4455e31" class="outline-2">
+<h2 id="org4455e31">Problem 14</h2>
+<div class="outline-text-2" id="text-org4455e31">
+<p>
+Given this data structure write some code to return an array containing the colors of the fruits and the sizes of the vegetables. The sizes should be uppercase and the colors should be capitalized.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">hsh = {
+  <span style="color: #2aa198;">'grape'</span> =&gt; {<span style="color: #d33682; font-weight: bold;">type:</span> <span style="color: #2aa198;">'fruit'</span>, <span style="color: #d33682; font-weight: bold;">colors:</span> [<span style="color: #2aa198;">'red'</span>, <span style="color: #2aa198;">'green'</span>], <span style="color: #d33682; font-weight: bold;">size:</span> <span style="color: #2aa198;">'small'</span>},
+  <span style="color: #2aa198;">'carrot'</span> =&gt; {<span style="color: #d33682; font-weight: bold;">type:</span> <span style="color: #2aa198;">'vegetable'</span>, <span style="color: #d33682; font-weight: bold;">colors:</span> [<span style="color: #2aa198;">'orange'</span>], <span style="color: #d33682; font-weight: bold;">size:</span> <span style="color: #2aa198;">'medium'</span>},
+  <span style="color: #2aa198;">'apple'</span> =&gt; {<span style="color: #d33682; font-weight: bold;">type:</span> <span style="color: #2aa198;">'fruit'</span>, <span style="color: #d33682; font-weight: bold;">colors:</span> [<span style="color: #2aa198;">'red'</span>, <span style="color: #2aa198;">'green'</span>], <span style="color: #d33682; font-weight: bold;">size:</span> <span style="color: #2aa198;">'medium'</span>},
+  <span style="color: #2aa198;">'apricot'</span> =&gt; {<span style="color: #d33682; font-weight: bold;">type:</span> <span style="color: #2aa198;">'fruit'</span>, <span style="color: #d33682; font-weight: bold;">colors:</span> [<span style="color: #2aa198;">'orange'</span>], <span style="color: #d33682; font-weight: bold;">size:</span> <span style="color: #2aa198;">'medium'</span>},
+  <span style="color: #2aa198;">'marrow'</span> =&gt; {<span style="color: #d33682; font-weight: bold;">type:</span> <span style="color: #2aa198;">'vegetable'</span>, <span style="color: #d33682; font-weight: bold;">colors:</span> [<span style="color: #2aa198;">'green'</span>], <span style="color: #d33682; font-weight: bold;">size:</span> <span style="color: #2aa198;">'large'</span>},
+}
+</pre>
+</div>
+<p>
+The return value should look like this:
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">[[<span style="color: #2aa198;">"Red"</span>, <span style="color: #2aa198;">"Green"</span>], <span style="color: #2aa198;">"MEDIUM"</span>, [<span style="color: #2aa198;">"Red"</span>, <span style="color: #2aa198;">"Green"</span>], [<span style="color: #2aa198;">"Orange"</span>], <span style="color: #2aa198;">"LARGE"</span>]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org285d7af" class="outline-3">
+<h3 id="org285d7af">Solution</h3>
+<div class="outline-text-3" id="text-org285d7af">
+<div class="org-src-container">
+<pre class="src src-ruby">arr = []
+hsh.each_value <span style="color: #859900; font-weight: bold;">do</span> |traits|
+  <span style="color: #859900; font-weight: bold;">if</span> traits[<span style="color: #d33682; font-weight: bold;">:type</span>] == <span style="color: #2aa198;">'fruit'</span>
+    arr &lt;&lt; traits[<span style="color: #d33682; font-weight: bold;">:colors</span>].map {|p| p.capitalize }
+  <span style="color: #859900; font-weight: bold;">else</span>
+    arr &lt;&lt; traits[<span style="color: #d33682; font-weight: bold;">:size</span>].upcase
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #268bd2;">p</span> arr
+</pre>
+</div>
+
+<pre class="example" id="org7cfae0f">
+[["Red", "Green"], "MEDIUM", ["Red", "Green"], ["Orange"], "LARGE"]
+</pre>
+
+<p>
+We can also call <code>Hash#map</code> to convert our hash into an array!
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">hsh.map <span style="color: #859900; font-weight: bold;">do</span> |_, traits|
+  <span style="color: #859900; font-weight: bold;">if</span> traits[<span style="color: #d33682; font-weight: bold;">:type</span>] == <span style="color: #2aa198;">'fruit'</span>
+    traits[<span style="color: #d33682; font-weight: bold;">:colors</span>].map {|c| c.capitalize}
+  <span style="color: #859900; font-weight: bold;">elsif</span> traits[<span style="color: #d33682; font-weight: bold;">:type</span>] == <span style="color: #2aa198;">'vegetable'</span>
+    traits[<span style="color: #d33682; font-weight: bold;">:size</span>].upcase
+  <span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org486ff08">
+[["Red", "Green"], "MEDIUM", ["Red", "Green"], ["Orange"], "LARGE"]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org63f716e" class="outline-2">
+<h2 id="org63f716e">Problem 15</h2>
+<div class="outline-text-2" id="text-org63f716e">
+<p>
+Given this data structure write some code to return an array which contains only the hashes where all the integers are even.
+</p>
+<div class="org-src-container">
+<pre class="src src-ruby">arr = [{<span style="color: #d33682; font-weight: bold;">a:</span> [<span style="color: #d33682; font-weight: bold;">1</span>, <span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">3</span>]}, {<span style="color: #d33682; font-weight: bold;">b:</span> [<span style="color: #d33682; font-weight: bold;">2</span>, <span style="color: #d33682; font-weight: bold;">4</span>, <span style="color: #d33682; font-weight: bold;">6</span>], <span style="color: #d33682; font-weight: bold;">c:</span> [<span style="color: #d33682; font-weight: bold;">3</span>, <span style="color: #d33682; font-weight: bold;">6</span>], <span style="color: #d33682; font-weight: bold;">d:</span> [<span style="color: #d33682; font-weight: bold;">4</span>]}, {<span style="color: #d33682; font-weight: bold;">e:</span> [<span style="color: #d33682; font-weight: bold;">8</span>], <span style="color: #d33682; font-weight: bold;">f:</span> [<span style="color: #d33682; font-weight: bold;">6</span>, <span style="color: #d33682; font-weight: bold;">10</span>]}]
+</pre>
+</div>
+</div>
+
+<div id="outline-container-orgab6f03e" class="outline-3">
+<h3 id="orgab6f03e">Solution</h3>
+<div class="outline-text-3" id="text-orgab6f03e">
+<div class="org-src-container">
+<pre class="src src-ruby">arr.select <span style="color: #859900; font-weight: bold;">do</span> |hsh|
+  <span style="color: #859900; font-weight: bold;">not</span> hsh.values.any? {|arr| arr.any? {|e| e.odd?}}
+<span style="color: #859900; font-weight: bold;">end</span>
+</pre>
+</div>
+
+<pre class="example" id="org0fbd6de">
+[{:e=&gt;[8], :f=&gt;[6, 10]}]
+</pre>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org3a96ae3" class="outline-2">
+<h2 id="org3a96ae3">Problem 16</h2>
+<div class="outline-text-2" id="text-org3a96ae3">
+<p>
+A UUID is a type of identifier often used as a way to uniquely identify items&#x2026;which may not all be created by the same system. That is, without any form of synchronization, two or more separate computer systems can create new items and label them with a UUID with no significant chance of stepping on each other&rsquo;s toes.
+</p>
+
+<p>
+It accomplishes this feat through massive randomization. The number of possible UUID values is approximately 3.4 X 10E38.
+</p>
+
+<p>
+Each UUID consists of 32 hexadecimal characters, and is typically broken into 5 sections like this 8-4-4-4-12 and represented as a string.
+</p>
+
+<p>
+It looks like this: <code>"f65c57f6-a6aa-17a8-faa1-a67f2dc9fa91"</code>
+</p>
+
+<p>
+Write a method that returns one UUID when called with no parameters.
+</p>
+</div>
+
+<div id="outline-container-org7adfbae" class="outline-3">
+<h3 id="org7adfbae">Solution</h3>
+<div class="outline-text-3" id="text-org7adfbae">
+<div class="org-src-container">
+<pre class="src src-ruby"><span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">uuid</span>
+  uuid = <span style="color: #2aa198;">""</span>
+  uuid &lt;&lt; <span style="color: #b58900;">Random</span>.rand(<span style="color: #d33682; font-weight: bold;">16</span>**<span style="color: #d33682; font-weight: bold;">8</span> - <span style="color: #d33682; font-weight: bold;">1</span>).to_s(<span style="color: #d33682; font-weight: bold;">16</span>)
+  uuid &lt;&lt; <span style="color: #2aa198;">"-"</span>
+  uuid &lt;&lt; <span style="color: #b58900;">Random</span>.rand(<span style="color: #d33682; font-weight: bold;">16</span>**<span style="color: #d33682; font-weight: bold;">4</span> - <span style="color: #d33682; font-weight: bold;">1</span>).to_s(<span style="color: #d33682; font-weight: bold;">16</span>)
+  uuid &lt;&lt; <span style="color: #2aa198;">"-"</span>
+  uuid &lt;&lt; <span style="color: #b58900;">Random</span>.rand(<span style="color: #d33682; font-weight: bold;">16</span>**<span style="color: #d33682; font-weight: bold;">4</span> - <span style="color: #d33682; font-weight: bold;">1</span>).to_s(<span style="color: #d33682; font-weight: bold;">16</span>)
+  uuid &lt;&lt; <span style="color: #2aa198;">"-"</span>
+  uuid &lt;&lt; <span style="color: #b58900;">Random</span>.rand(<span style="color: #d33682; font-weight: bold;">16</span>**<span style="color: #d33682; font-weight: bold;">4</span> - <span style="color: #d33682; font-weight: bold;">1</span>).to_s(<span style="color: #d33682; font-weight: bold;">16</span>)
+  uuid &lt;&lt; <span style="color: #2aa198;">"-"</span>
+  uuid &lt;&lt; <span style="color: #b58900;">Random</span>.rand(<span style="color: #d33682; font-weight: bold;">16</span>**<span style="color: #d33682; font-weight: bold;">12</span> - <span style="color: #d33682; font-weight: bold;">1</span>).to_s(<span style="color: #d33682; font-weight: bold;">16</span>)
+  uuid
+<span style="color: #859900; font-weight: bold;">end</span>
+uuid()
+
+<span style="color: #859900; font-weight: bold;">def</span> <span style="color: #268bd2;">uuid2</span>
+  uuid = <span style="color: #2aa198;">""</span>
+  <span style="color: #d33682; font-weight: bold;">32</span>.times <span style="color: #859900; font-weight: bold;">do</span>
+    uuid &lt;&lt; <span style="color: #b58900;">Random</span>.rand(<span style="color: #d33682; font-weight: bold;">16</span>).to_s(<span style="color: #d33682; font-weight: bold;">16</span>)
+  <span style="color: #859900; font-weight: bold;">end</span>
+  uuid[<span style="color: #d33682; font-weight: bold;">0</span>..<span style="color: #d33682; font-weight: bold;">7</span>] + <span style="color: #2aa198;">'-'</span> + uuid[<span style="color: #d33682; font-weight: bold;">8</span>..<span style="color: #d33682; font-weight: bold;">11</span>] + <span style="color: #2aa198;">'-'</span> + uuid[<span style="color: #d33682; font-weight: bold;">12</span>..<span style="color: #d33682; font-weight: bold;">15</span>] + <span style="color: #2aa198;">'-'</span> + uuid[<span style="color: #d33682; font-weight: bold;">16</span>..<span style="color: #d33682; font-weight: bold;">19</span>] + <span style="color: #2aa198;">'-'</span> + uuid[<span style="color: #d33682; font-weight: bold;">20</span>..]
+<span style="color: #859900; font-weight: bold;">end</span>
+<span style="color: #268bd2;">puts</span> uuid()
+<span style="color: #268bd2;">puts</span> uuid2()
+</pre>
+</div>
+
+<pre class="example" id="org04cc677">
+d75a7df6-401b-e24d-c14f-87b771fe01b6
+f6bb0961-d02f-b059-7c65-d82641237986
+</pre>
+</div>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Brady Stanton</p>
+<p class="date">Created: 2022-01-21 Fri 18:31</p>
+</div>
+</body>
+</html>

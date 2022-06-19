@@ -1,0 +1,107 @@
+#+TITLE: Notes
+#+PROPERTY: header-args:ruby :session ruby :results output :exports code
+
+* Selection and Transformation
+
+** In this example we want to select the key-value pairs where the value is 'Fruit'.
+#+begin_src ruby
+produce = {
+  'apple' => 'Fruit',
+  'carrot' => 'Vegetable',
+  'pear' => 'Fruit',
+  'broccoli' => 'Vegetable'
+}
+
+puts select_fruit(produce) # => {"apple"=>"Fruit", "pear"=>"Fruit"}
+#+end_src
+
+How would you implement a method like this?
+
+*** Discussion
+The naive way of going about this would be to iterate through each of the hashe's keys and check its value for a match. For each key that has a matching value, add that key to a new hash and return that new hash when finished inspecting all keys.
+#+begin_src ruby
+def select_fruit(produce)
+  fruit = {}
+  for key in produce.keys
+    fruit[key] = produce[key] if produce[key] == "Fruit"
+  end
+  fruit
+end
+puts select_fruit(produce) # => {"apple"=>"Fruit", "pear"=>"Fruit"}
+#+end_src
+
+#+RESULTS:
+: {"apple"=>"Fruit", "pear"=>"Fruit"}
+
+** Doubling Numbers
+#+begin_src ruby
+my_numbers = [1, 4, 3, 7, 2, 6]
+double_numbers(my_numbers) # => [2, 8, 6, 14, 4, 12]
+#+end_src
+Note that the ~double_numbers~ method returned a new array with every element doubled, and that the original array is not mutated. In other words, ~my_numbers~ is still [1, 4, 3, 7, 2, 6]. This isn't a requirement, but just a consequence of how we implemented the method.
+
+If we wanted to, we could've easily decided that mutating the method argument is the right approach. Can you implement a ~double_numbers!~ method that mutates its argument?
+
+*** Solution
+#+begin_src ruby
+def doubled_numbers!(numbers)
+  counter = 0
+  loop do
+    break if counter == numbers.size
+    numbers[counter] *= 2
+    counter += 1
+  end
+end
+numbers = [1, 2, 3, 4]
+doubled_numbers!(numbers)
+puts numbers.to_s
+#+end_src
+
+#+RESULTS:
+: [2, 4, 6, 8]
+
+** Doubling Odd Numbers
+#+begin_src ruby
+my_numbers = [1, 4, 3, 7, 2, 6]
+double_odd_numbers(my_numbers)  # => [2, 4, 6, 14, 2, 6]
+
+# not mutated
+my_numbers                      # => [1, 4, 3, 7, 2, 6]
+#+end_src
+Exercise for the reader: What if we wanted to transform the numbers based on their position in the array rather than their value?
+Try coding a solution that doubles the numbers that have odd indices:
+*** Solution
+#+begin_src ruby
+def double_every_other_number(numbers)
+  counter = 0
+  doubled_numbers = []
+  loop do
+    break if counter == numbers.size
+    current_number = numbers[counter]
+    current_number *= 2 if counter.odd?
+    doubled_numbers << current_number
+    counter += 1
+  end
+  doubled_numbers
+end
+puts double_every_other_number([1, 2, 3, 4]) == [1, 4, 3, 8]
+#+end_src
+
+#+RESULTS:
+: true
+
+** Doubling Numbers Revisited and Expanded
+Try coding a method that allows you to multiply every array item by a specified value.
+#+begin_src ruby
+def multiply(arr, multiple)
+  output = []
+  arr.length.times do |count|
+    output << arr[count] * multiple
+  end
+  output
+end
+puts multiply([1, 2, 3, 4], 3) == [3, 6, 9, 12]
+#+end_src
+
+#+RESULTS:
+: true
