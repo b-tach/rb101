@@ -179,7 +179,7 @@ def display_game_round_outcome(dealer_hand, player_hand)
   end
 end
 
-def do_game_turns (deck, dealer_hand, player_hand)
+def do_game_turns(deck, dealer_hand, player_hand)
   dealer_turn!(deck, dealer_hand)
   player_turn!(deck, dealer_hand, player_hand)
 end
