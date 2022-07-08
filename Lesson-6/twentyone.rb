@@ -159,23 +159,23 @@ def busted?(score)
   score > 21
 end
 
-def game_round_outcome(dealer_hand, player_hand)
+def display_game_round_outcome(dealer_hand, player_hand)
   player_score = hand_card_values(player_hand).sum
   dealer_score = hand_card_values(dealer_hand).sum
   if busted?(player_score)
     if busted?(dealer_score)
-      "You both busted!"
+      puts "You both busted!"
     else
-      "You busted! The dealer won!"
+      puts "You busted! The dealer won!"
     end
   elsif busted?(dealer_score)
-    "The dealer busted! You won!"
+    puts "The dealer busted! You won!"
   elsif player_score > dealer_score
-    "You won!"
+    puts "You won!"
   elsif player_score < dealer_score
-    "The dealer won!"
+    puts "The dealer won!"
   else
-    "A tie!"
+    puts "A tie!"
   end
 end
 
@@ -190,7 +190,7 @@ def display_game_summary(dealer_hand, player_hand)
   puts "Dealer Score: #{hand_card_values(dealer_hand).sum}\n\nPlayer's hand:"
   display_hand_gfx(player_hand, false)
   puts "Player's Score: #{hand_card_values(player_hand).sum}"
-  puts game_round_outcome(dealer_hand, player_hand)
+  display_game_round_outcome(dealer_hand, player_hand)
 end
 
 def game_round
@@ -212,6 +212,7 @@ def main_display_intro
 end
 
 def main
+  main_display_intro
   prompt "Would you like to play a round?"
   ans = gets.chomp.downcase[0]
   return if ans != 'y'
