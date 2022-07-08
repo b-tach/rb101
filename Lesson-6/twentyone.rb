@@ -44,13 +44,13 @@ end
 
 def parse_card(card_num)
   card_name_id = card_num % 13
-  card_set_id = card_num / 13
-  { name_id: card_name_id, set_id: card_set_id }
+  card_suite_id = card_num / 13
+  { name_id: card_name_id, suite_id: card_suite_id }
 end
 
 def get_card_name(card_num)
   card = parse_card(card_num)
-  "#{CARD_NAMES[card[:name_id]]} of #{CARD_SUITES[card[:set_id]]}"
+  "#{CARD_NAMES[card[:name_id]]} of #{CARD_SUITES[card[:suite_id]]}"
 end
 
 def get_card_value(card_num)
@@ -90,9 +90,9 @@ def clear_screen
   system("clear")
 end
 
-def display_hand_gfx_card_symbols(hand, is_dealer_hand? = false)
+def display_hand_gfx_card_symbols(hand, is_dealer_hand = false)
   hand.each_with_index do |card, index|
-    card_id = if is_dealer_hand? && index > 0
+    card_id = if is_dealer_hand && index > 0
                 13
               else
                 parse_card(card)[:name_id]
@@ -108,13 +108,13 @@ def display_hand_gfx_card_symbols(hand, is_dealer_hand? = false)
   puts
 end
 
-def display_hand_gfx_set_symbols(hand, is_dealer_hand? = false)
+def display_hand_gfx_set_symbols(hand, is_dealer_hand = false)
   (0..6).each do |vert_slice|
     (0..hand.length - 1).each do |card_index|
-      card_set_id = if is_dealer_hand? && card_index > 0
+      card_set_id = if is_dealer_hand && card_index > 0
                       4
                     else
-                      parse_card(hand[card_index])[:set_id]
+                      parse_card(hand[card_index])[:suite_id]
                     end
       print GFX_SUITES[card_set_id][vert_slice] + " "
     end
@@ -122,12 +122,12 @@ def display_hand_gfx_set_symbols(hand, is_dealer_hand? = false)
   end
 end
 
-def display_hand_gfx(hand, is_dealer_hand? = false)
+def display_hand_gfx(hand, is_dealer_hand = false)
   hand.length.times { print "#{GFX_TOP} " }
   puts
-  display_hand_gfx_card_symbols(hand, is_dealer_hand?)
-  display_hand_gfx_set_symbols(hand, is_dealer_hand?)
-  display_hand_gfx_card_symbols(hand, is_dealer_hand?)
+  display_hand_gfx_card_symbols(hand, is_dealer_hand)
+  display_hand_gfx_set_symbols(hand, is_dealer_hand)
+  display_hand_gfx_card_symbols(hand, is_dealer_hand)
   hand.length.times { print "#{GFX_BOTTOM} " }
   puts "\n\n"
 end
